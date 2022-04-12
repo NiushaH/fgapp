@@ -15,26 +15,7 @@ POST /login
   2. You forgot to build a logout
   3. Create a protected page
 
-GET /food/new
-  present a form to create a new food with countdown timer(s)
-POST /food
-  take the food item data with timer intervals and save them to the DB
-
-GET /countdown
-  show a list of all countdowns in progress
-
-GET /countdown/:id
-  Show details of countdown (food steps)
-  BUTTON to check off completion of time interval (start next one, or end all in progress because food is done being made)
-
-PATCH /food/:id
-  Update the countdown timer interval
-
-PUT /food
-
-DELETE /food
-
-PATCH /countdown/:id
-
-DELETE /countdown/:id
-
+GET /timer/new
+  present a form to create a countdown timer with an alert message
+POST /timer
+  take the countdown time and message and save both to the DB
