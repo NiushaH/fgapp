@@ -1,5 +1,5 @@
 {
-  "name": "hstimer",
+  "name": "fittp",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
