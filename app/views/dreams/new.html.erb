@@ -5,11 +5,14 @@
 
 <%# # Mid-level abstraction %>
 <%= form_tag("/dreams") do %>
-  <%= label_tag "Dream" %>
-  <%= text_field_tag "Dream" %>
+  <%= label_tag "Dream Name" %>
+  <%= text_field_tag "Name" %>
+
+  <%= label_tag "Funding Needed" %>
+  <%= text_field_tag "Cost" %>
 
   <%= submit_tag %>
 <% end %>
 
 <%# # Highest level of abstraction -- saves time, most amount of assumptions built into Rails
-<%= form_for(@dream) %> %>
+<%= form_for(@dream) %>
