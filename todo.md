@@ -29,3 +29,8 @@ POST /transfer
 SHOW /transfers
   show all dreams that were funded by a FG (fairy godmother)
 
+
+
+IDEAS FOR LATER
+  *  build out to have multiple funders (possibly give dreamers the option of approving who to accept)
+

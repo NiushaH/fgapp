@@ -1,0 +1,15 @@
+<h1>Fund a Dream</h1>
+
+<%# #Lowest level of abstraction -- most explicit control
+<form action="/dreams" method="POST"> %>
+
+<%# # Mid-level abstraction %>
+<%= form_tag("/dreams") do %>
+  <%= label_tag "Dream" %>
+  <%= text_field_tag "Dream" %>
+
+  <%= submit_tag %>
+<% end %>
+
+<%# # Highest level of abstraction -- saves time, most amount of assumptions built into Rails
+<%= form_for(@dream) %> %>
