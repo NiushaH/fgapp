@@ -19,8 +19,15 @@ GET /dream
   present a form to create a dream with a $ cost
 POST /dream
   take the dream and cost and save both to the DB
+# Build in order of app functionality
+GET /dreams/:id
+  - Show details of the dream funding request
+  ACCEPT TO FUND DREAM
 SHOW /dreams
   show all users dreams
+  - how do we know if a dream needs funding?
+  - how do we only show only open dreams in the view?
+
 
 GET /transfer
   present a form to initiate a transfer of funds

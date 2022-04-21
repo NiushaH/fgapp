@@ -2,6 +2,6 @@
 
 <ol>
 <%= @dreams.each do |d| %>
-  <li> <%= d.name %>  Cost: $<%= d.cost %></li>
+  <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost}", dream_path(d)%></a></li>
   <% end %>
 </ol>
