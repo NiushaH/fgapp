@@ -10,6 +10,13 @@ class DreamsController < ApplicationController
      @dreams = Dream.all
    end
 
+   def show
+     # find the dream the funder wants based on the URL (Rails uses params object and ID key for this)
+     @dream = Dream.find(params[:id])
+     # render a show view
+
+   end
+
    def create
      @dream = Dream.new
      # Using strong params implies programmer knows exactly what data they are assigning and data has been sanitized before saving to database

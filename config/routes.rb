@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#destroy'
 
+  # Rails route helper
   resources :dreams
 
   root 'application#home'

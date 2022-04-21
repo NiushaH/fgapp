@@ -20,6 +20,7 @@ GET /dream
 POST /dream
   take the dream and cost and save both to the DB
 # Build in order of app functionality
+@16 MINUTE ON VIDEO 3
 GET /dreams/:id
   - Show details of the dream funding request
   ACCEPT TO FUND DREAM
