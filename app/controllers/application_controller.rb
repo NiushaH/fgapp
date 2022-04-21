@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
   def home
   end
 
+  private
+    def authentication_required
+      if !logged_in?
+         redirect_to "/login"
+      end
+    end
+
   # moved all code below to SessionsHelper
   # private
     # helpers / Methods used in other actions

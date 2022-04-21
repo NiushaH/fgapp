@@ -1,5 +1,6 @@
 module ApplicationHelper
     # A space for view-level helpers not controller helpers
+    # line below is a subscope
   module SessionsHelper
 
     def logged_in?
