@@ -4,8 +4,13 @@ class Dream < ApplicationRecord
     # Turned off belongs_to validation with optional code on line below
     belongs_to :funder_user, :class_name => "User", :optional => true
 
-  # This method represents a moment in time  
+  # Models should have behavior; this method represents a moment in time  
   def funded_by(user)
     self.update(:funder_user => user)
+  end
+
+  def funded?
+    # Force method to respond with a boolean with true or nil
+    true if funder_user
   end
 end

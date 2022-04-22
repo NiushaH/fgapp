@@ -1,7 +1,7 @@
 <h1> <%= @dream.name %> <%= @dream.cost %> </h1>
 <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
 
-<% if @dream.funder_user %>
+<% if @dream.funded? %>
     <h3> Accepted by: <%= @dream.funder_user.email %></h3>
 <% else %>
     <%= form_for(@dream) do |d| %>
