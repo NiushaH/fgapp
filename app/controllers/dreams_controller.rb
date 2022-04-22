@@ -14,7 +14,20 @@ class DreamsController < ApplicationController
      # find the dream the funder wants based on the URL (Rails uses params object and ID key for this)
      @dream = Dream.find(params[:id])
      # render a show view
+   end
 
+   def update 
+    # raise params.inspect to debug form
+     @dream = Dream.find(params[:id])
+     # Mixin module SessionHelper has current_user method instead of Application_Controller
+     # Rails implicitly assumes that you're building an application that has state so sessions are enabled in Rails
+     @dream.funder_user_id = current_user
+     # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
+     if @dream.update(:funder_user => current_user) 
+       redirect_to @dream
+     else
+       render :show
+     end
    end
 
    def create
@@ -40,7 +53,13 @@ class DreamsController < ApplicationController
    
    private
       # Strong Params is required only when
-      #   You are mass assigning data.
+      #   You are mass assigning data from params, like the example below:
+      #     e.g.  User.new({:name => "Avi", :email => "avi@flatiron.com"})
+      #           @user.update({})   <-- Update more than one value at once
+      # "Sanitized data" means that you only have ONLY the expected keys.
+      # If User.new(params) came through, Rails will stop you.
+      # Rails makes you params.require(:user).permit(:name, :email)
+
       #   User.new(params[:user])   WON'T WORK
       #   User.new(user_params)   SANITIZED SO USERS CAN'T HACK
       def dream_params

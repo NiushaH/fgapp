@@ -1,2 +1,13 @@
 <h1> <%= @dream.name %> <%= @dream.cost %> </h1>
 <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
+
+<% if @dream.funder_user %>
+    <h3> Accepted by: <%= @dream.funder_user.email %></h3>
+<% else %>
+    <%= form_for(@dream) do |d| %>
+    # Sends a patch request with a funder_user_id to update the dream available to fund
+    # Can't update a dream that's already been funded -- or don't show dreams that have been funded on the All Dreams page
+    # So that no one else uses this button to overwrite another funder who already funded this dream
+    <%= d.submit "Fund This Dream" %>
+    <% end %>
+<% end %>

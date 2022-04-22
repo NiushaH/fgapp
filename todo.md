@@ -20,7 +20,7 @@ GET /dream
 POST /dream
   take the dream and cost and save both to the DB
 # Build in order of app functionality
-@16 MINUTE ON VIDEO 3
+# ERRORS TROUBLESHOOTING STEPS: LOOK AT DATA RECEIVED FROM FORM, THEN DID I SET THE DATA CORRECTLY?, DID I FORGET TO SAVE THE DATA? 
 GET /dreams/:id
   - Show details of the dream funding request
   ACCEPT TO FUND DREAM
