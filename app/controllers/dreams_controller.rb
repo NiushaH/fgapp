@@ -1,34 +1,36 @@
 class DreamsController < ApplicationController
-   # Add step of logic to redirect those not logged in
-   before_action :authentication_required
+  # Add step of logic to redirect those not logged in
+  before_action :authentication_required
    
-   def new
-   end
+  def new
+  end
    
-   def index
-   #   raise = Dream.all.inspect
-     @dreams = Dream.all
-   end
+  def index
+  #   raise = Dream.all.inspect
+    @dreams = Dream.all
+  end
 
-   def show
-     # find the dream the funder wants based on the URL (Rails uses params object and ID key for this)
-     @dream = Dream.find(params[:id])
-     # render a show view
-   end
+  def show
+    # find the dream the funder wants based on the URL (Rails uses params object and ID key for this)
+    @dream = Dream.find(params[:id])
+    # render a show view
+  end
 
-   def update 
+  def update 
     # raise params.inspect to debug form
-     @dream = Dream.find(params[:id])
-     # Mixin module SessionHelper has current_user method instead of Application_Controller
-     # Rails implicitly assumes that you're building an application that has state so sessions are enabled in Rails
-     @dream.funder_user_id = current_user
-     # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
-     if @dream.update(:funder_user => current_user) 
-       redirect_to @dream
-     else
-       render :show
-     end
-   end
+    @dream = Dream.find(params[:id])
+    # Mixin module SessionHelper has current_user method instead of Application_Controller
+    # Rails implicitly assumes that you're building an application that has state so sessions are enabled in Rails
+    @dream.funder_user_id = current_user
+    # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
+    # if @dream.update(:funder_user => current_user) 
+    # Refactor code to be more understandable
+    if @dream.funded_by(current_user)
+      redirect_to @dream
+    else
+      render :show
+    end
+  end
 
    def create
      @dream = Dream.new
