@@ -5,9 +5,12 @@ class DreamsController < ApplicationController
   def new
   end
    
+  # Ruby's built in parser understands the end of a line of code, but if you need to start
+  # another line of code on the same line, you can use a semi colon
+  # e.g.   def index; "blah blah blah" 
   def index
   #   raise = Dream.all.inspect
-    @dreams = Dream.all
+    @dreams = Dream.by_status(:open)
   end
 
   def show
