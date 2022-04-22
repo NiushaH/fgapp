@@ -10,6 +10,7 @@ class DreamsController < ApplicationController
   # e.g.   def index; "blah blah blah" 
   def index
   #   raise = Dream.all.inspect
+    @dreams = Dream.all
     @dreams = Dream.by_status(:open)
   end
 
@@ -24,7 +25,7 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
     # Mixin module SessionHelper has current_user method instead of Application_Controller
     # Rails implicitly assumes that you're building an application that has state so sessions are enabled in Rails
-    @dream.funder_user_id = current_user
+    # @dream.funder_user_id = current_user
     # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
     # if @dream.update(:funder_user => current_user) 
     # Refactor code to be more understandable
