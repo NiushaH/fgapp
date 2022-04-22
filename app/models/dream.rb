@@ -3,6 +3,17 @@ class Dream < ApplicationRecord
     belongs_to :dreamer_user, :class_name => "User"
     # Turned off belongs_to validation with optional code on line below
     belongs_to :funder_user, :class_name => "User", :optional => true
+    
+
+  def self.by_status(status)
+    # ActiveRecord Scopes help build macros like this one below:
+    case status
+    when :open
+        where(:funder_user => nil)
+    when :funded
+        where.not(:funder_user => nil)
+    end
+  end
 
   # Models should have behavior; this method represents a moment in time  
   def funded_by(user)
