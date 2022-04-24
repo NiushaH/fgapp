@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         login(@user)
         redirect_to "/"
       else
-        redirect_to "/login", :notice => "Can't find that user"
+        redirect_to "/login", :notice => "Can't find that email or password entered incorrectly."
       end
     end
 

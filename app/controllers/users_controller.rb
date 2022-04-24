@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to "/login"
     else
-      render :new
+      render :new, :error => "Please include a password."
     end
   end
 end
