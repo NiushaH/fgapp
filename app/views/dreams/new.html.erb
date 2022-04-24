@@ -5,7 +5,12 @@
 
 <%# # Mid-level abstraction %>
 <%= form_tag("/dreams") do %>
-  <%= label_tag "Dream Name" %>
+  <%= label_tag "name", "Dream Name" %>
+  <% if @dream && @dream.errors[:name] %>
+    <% @dream.errors.full_messages_for(:name).each do |message| %>
+    <p><%= message %></p>
+    <% end %>
+  <% end %>
   <%= text_field_tag "Name" %>
 
   <%= label_tag "Funding Needed" %>

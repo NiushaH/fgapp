@@ -46,7 +46,7 @@ class DreamsController < ApplicationController
      if @dream.save
         redirect_to "/dreams"
      else
-        raise @dream.errors.inspect
+        render :new
      end
    end
 
