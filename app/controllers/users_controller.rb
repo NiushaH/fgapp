@@ -10,9 +10,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new
     @user.email = params[:email]
-    @user.save
-
-    redirect_to "/login"
+    @user.password = params[:password]
+    if @user.save
+      redirect_to "/login"
+    else
+      render :new
+    end
   end
-
 end
