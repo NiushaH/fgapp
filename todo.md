@@ -21,6 +21,7 @@ POST /dream
   take the dream and cost and save both to the DB
 # Build in order of app functionality
 # ERRORS TROUBLESHOOTING STEPS: LOOK AT DATA RECEIVED FROM FORM, THEN DID I SET THE DATA CORRECTLY?, DID I FORGET TO SAVE THE DATA? 
+# @1 hour mark of Part 3 video  -- HOME PAGE IS EMPTY FOR SOME REASON  (scratching head)
 GET /dreams/:id
   - Show details of the dream funding request
   ACCEPT TO FUND DREAM
