@@ -18,8 +18,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # TODO -- CREATE METHOD TO SHOW ONLY CURRENT USERS DREAMS SO THEY CAN SEE FUNDING STATUS
-  def show
-    @dreams = current_user.dream_requests
+  def show_dreams
+    @user = current_user
   end
+
+  def show_investments
+    @user = current_user
+  end
+
 end

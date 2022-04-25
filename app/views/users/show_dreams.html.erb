@@ -1,7 +1,7 @@
 <h1>My Dreams</h1>
 
 <ol>
-<%= @user.dreams.each do |d| %>
+<%= @user.dream_requests.each do |d| %>
   <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost}", dream_path(d) %></a></li>
   <% end %>
 </ol>
