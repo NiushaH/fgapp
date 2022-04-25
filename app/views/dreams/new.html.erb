@@ -12,8 +12,13 @@
     <% end %>
   <% end %>
   <%= text_field_tag "Name" %>
-
+<br></br>
   <%= label_tag "Funding Needed" %>
+  <% if @dream && @dream.errors[:cost] %>
+    <% @dream.errors.full_messages_for(:cost).each do |message| %>
+    <p><%= message %></p>
+    <% end %>
+  <% end %>
   <%= text_field_tag "Cost" %>
 
   <%# <%= hidden_field_tag "dreamer_id", @current_user.id %>
