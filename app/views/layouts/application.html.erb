@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>fgapp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,28 +8,44 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-    <% if session[:current_user_id] %>
-      <nav>        
-        <section>
-          <%= link_to_unless_current "Home", root_path %> |
-          <%= link_to_unless_current "Dreams To Support", dreams_path %> |
-          <%= link_to_unless_current "Request Funding for a Dream", new_dream_path %> |
-          <%= link_to "My Dreams", users_dreams_path(:id) %> |
-          <%= link_to "My Investments in Others", user_funds_path(:id) %>
-        </section>
-      
+    <header class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          </div>
+
+
         <section class="utility">
-          <% if session[:current_user_id] %>
-          You are logged in as: <%= @current_user.email %> | 
-          <a href="/logout">Logout</a>
-          <% else %>
-          <%= link_to_unless_current "Login", login_path %> |
-          <%= link_to_unless_current "Register", register_path %> 
-          <% end %>
+          <ul class="nav navbar-nav navbar-right">
+            <% if session[:current_user_id] %>
+            <a href="/logout">Logout</a>
+            <p></p>
+            <p>
+            You are logged in as: <%= @current_user.email %></p>
+            <%= link_to "My Dreams", users_dreams_path(:id) %> |
+            <%= link_to "My Investments in Others", user_funds_path(:id) %>
+            <% else %>
+            <%= link_to_unless_current "Login", login_path %> |
+            <%= link_to_unless_current "Register", register_path %> 
+            <% end %>
+          </ul>
         </section>
+
+
+          <ul class="nav navbar-nav navbar-left">
+            <% if session[:current_user_id] %>
+              <nav>        
+                <section>
+                  <p><%= link_to_unless_current "Home", root_path %></p>
+                  <p><%= link_to_unless_current "Dreams To Support", dreams_path %></p>
+                  <p><%= link_to_unless_current "Request Funding for a Dream", new_dream_path %></p>
+                </section>
+          </ul>
+
 
       </nav>
     <% end %>

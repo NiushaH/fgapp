@@ -1,7 +1,15 @@
 <h1>My Dreams</h1>
 
-<ol>
-<%= @user.dream_requests.each do |d| %>
-  <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost}", dream_path(d) %></a></li>
+<%= @user.dream_requests do |d| %>
+  <% if d.includes(:funder_user_id == true) %>
+  <h2>Awaiting Funding</h2>
+    <ol>
+    <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost}", dream_path(d) %></a></li>
+    </ol>
+  <% else d.includes(:funder_user_id == false) %>
+  <h2>Funded Dreams</h2>
+    <ol>
+    <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost} was funded by #{d.funder_user.email}", dream_path(d) %></a></li>
+    </ol>  
   <% end %>
-</ol>
+<% end %>  

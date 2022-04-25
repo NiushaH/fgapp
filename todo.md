@@ -8,7 +8,13 @@ POST /users
   create the user in database, maybe validation
 
 SHOW /users/:id/dreams
-# CREATE THIS ROUTE AND LOGIC FROM DREAMS#INDEX.HTML.ERB to USERSCONTROLLER  
+  # make url :id dynamic
+  # REMOVE text array display of dreams details
+
+SHOW /users/:id/funds
+  # make url :id dynamic
+  # REMOVE text array display of dreams details
+
 
 GET /login
   present a login form
