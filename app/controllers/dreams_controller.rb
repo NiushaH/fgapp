@@ -10,7 +10,7 @@ class DreamsController < ApplicationController
   # e.g.   def index; "blah blah blah" 
   def index
   #   raise = Dream.all.inspect
-    @dreams = Dream.all
+    # @dreams = Dream.all
     @dreams = Dream.by_status(:open)
   end
 
@@ -29,26 +29,30 @@ class DreamsController < ApplicationController
     # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
     # if @dream.update(:funder_user => current_user) 
     # Refactor code to be more understandable
-    if @dream.funded_by(current_user)
+    if @dream.funded_by(current_user) # returns true or false
+      # Controller doesn't understand validity, it's the traffic cop that understands models and views -- green light go there, red light go there
+      # This gives truthy or falsey value -- if it returns true, then the funder updated the column to fund the dream
       redirect_to @dream
     else
+      # assume that @dream.errors can explain why falsey with its message
       render :show
     end
   end
 
-   def create
-     @dream = Dream.new
-     # Using strong params implies programmer knows exactly what data they are assigning and data has been sanitized before saving to database
-     @dream.name = params["Name"]
-     @dream.cost = params["Cost"]
-     @dream.dreamer_user_id = current_user.id
-
-     if @dream.save
-        redirect_to "/dreams"
-     else
-        render :new
-     end
-   end
+  def create
+    @dream = Dream.new
+    # Using strong params implies programmer knows exactly what data they are assigning and data has been sanitized before saving to database
+    @dream.name = params["Name"]
+    @dream.cost = params["Cost"]
+    @dream.dreamer_user_id = current_user.id
+    # Rails magic .save method
+    if @dream.save
+      # assume new row was added to database
+      redirect_to "/dreams"
+    else
+       render :new
+    end
+  end
 
    # What information do I need to fund a dream?
    # Dream Name

@@ -7,6 +7,9 @@ GET /register
 POST /users
   create the user in database, maybe validation
 
+SHOW /users/:id/dreams
+# CREATE THIS ROUTE AND LOGIC FROM DREAMS#INDEX.HTML.ERB to USERSCONTROLLER  
+
 GET /login
   present a login form
 POST /login
@@ -21,7 +24,6 @@ POST /dream
   take the dream and cost and save both to the DB
 # Build in order of app functionality
 # ERRORS TROUBLESHOOTING STEPS: LOOK AT DATA RECEIVED FROM FORM, THEN DID I SET THE DATA CORRECTLY?, DID I FORGET TO SAVE THE DATA? 
-# @1:15 hour mark of Part 4 video
 GET /dreams/:id
   - Show details of the dream funding request
   ACCEPT TO FUND DREAM

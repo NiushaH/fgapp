@@ -5,6 +5,8 @@ class Dream < ApplicationRecord
     belongs_to :funder_user, :class_name => "User", :optional => true
     validates :name, :length => {in: 3..100}
     validates :cost, :presence => true
+    # check the object in Rails console by calling self.changes
+    validate :different_funder
 
   def self.by_status(status)
     # ActiveRecord Scopes help build macros like this one below:
@@ -16,13 +18,15 @@ class Dream < ApplicationRecord
     end
   end
 
+  def different_funder
+    if self.funder_user == self.dreamer_user
+      self.errors.add(:funder_user)
+    end
+  end
+
   # Models should have behavior; this method represents a moment in time  
   def funded_by(user)
-    if user == self.dreamer_user
-      self.errors.add(:funder_user)
-    else
-      self.update(:funder_user => user)
-    end
+    self.update(:funder_user => user)
   end
 
   def funded?

@@ -1,7 +1,10 @@
-<h1>All Dreams</h1>
+<h1>All Dreams I Could Fund</h1>
 
 <ol>
-<%= @dreams.each do |d| %>
+<% @dreams.each do |d| %>
   <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost}", dream_path(d) %></a></li>
-  <% end %>
+<% end %>
 </ol>
+
+
+<%= link_to "Dream Investments Wished For Myself", users_dreams_path(:id) %>

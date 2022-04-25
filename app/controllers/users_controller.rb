@@ -17,4 +17,9 @@ class UsersController < ApplicationController
       render :new, :error => "Please include a password."
     end
   end
+
+  # TODO -- CREATE METHOD TO SHOW ONLY CURRENT USERS DREAMS SO THEY CAN SEE FUNDING STATUS
+  def show
+    @dreams = current_user.dream_requests
+  end
 end

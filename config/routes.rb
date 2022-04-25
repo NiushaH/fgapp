@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/register', to: 'users#new'
   post '/users', to: 'users#create'
+  get 'users/:id/dreams' => 'users#show', :as => :users_dreams
 
   # creates a session between a cookie and a browser
   get '/login', to: 'sessions#new'
