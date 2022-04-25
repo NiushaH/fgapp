@@ -19,7 +19,7 @@ class Dream < ApplicationRecord
   # Models should have behavior; this method represents a moment in time  
   def funded_by(user)
     if user == self.dreamer_user
-      self.errors.add(:funder_user, "You can't fund yourself.")
+      self.errors.add(:funder_user)
     else
       self.update(:funder_user => user)
     end
