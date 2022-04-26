@@ -11,7 +11,7 @@
     <% end %>
     
     <h2>Funded Dreams</h2>
-      <% if @user.dreams_funded.where(:funder_user == true).each do |dr| %>
+      <% if @user.dream_requests.where(:funder_user == true).each do |dr| %>
         <ol>
         <li><%= link_to "Your dream to #{dr.name} that cost $#{dr.cost} was funded by #{dr.funder_user.email}", dream_path(dr) %></a></li>
         </ol>
