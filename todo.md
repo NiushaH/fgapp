@@ -13,6 +13,13 @@ SHOW /users/:id/dreams
 SHOW /users/:id/funds
   # make url :id dynamic
 
+SHOW /users/:id/my_funders
+  # Refactor to use :funder_users from user model has_many, through: object associations
+
+SHOW /users/:id/dreamers_I_support
+  # Refactor to use :dreamer_users from user model has_many, through: object associations
+
+
 # CREATE DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()
 
 GET /login

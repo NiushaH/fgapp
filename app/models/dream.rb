@@ -1,7 +1,9 @@
 class Dream < ApplicationRecord
-    # Aliased associations that are also self-referential associations
+    # Aliased associations that are also self-referential associations, 
+    # SHOULD I ADD THIS: , :foreign_key => "dream_requests_id"
     belongs_to :dreamer_user, :class_name => "User"
     # Turned off belongs_to validation with optional code on line below
+    # SHOULD I ADD THIS: , :foreign_key => "dreams_funded_id"
     belongs_to :funder_user, :class_name => "User", :optional => true
     validates :name, :length => {in: 3..100}
     validates :cost, :presence => true
