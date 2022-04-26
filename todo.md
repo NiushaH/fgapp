@@ -8,19 +8,21 @@ POST /users
   create the user in database, maybe validation
 
 SHOW /users/:id/dreams
+  # REFACTOR RESOURCES (to make this URL dynamic) AND RETHINK IF /FUNDS, /MYFUNDERS, 
+  #   and /DREAMERSISUPPORT SHOULD BE SCOPES
   # make url :id dynamic
 
 SHOW /users/:id/funds
   # make url :id dynamic
 
 SHOW /users/:id/my_funders
+  # SHOULD THIS BE A SCOPE WITHIN THE MODEL OR A VIEW??
   # Refactor to use :funder_users from user model has_many, through: object associations
 
 SHOW /users/:id/dreamers_I_support
   # Refactor to use :dreamer_users from user model has_many, through: object associations
 
 
-# CREATE / ADD DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()
 
 GET /login
   present a login form
@@ -43,7 +45,8 @@ SHOW /dreams
   show all users dreams
   - how do we know if a dream needs funding?
   - how do we only show only open dreams in the view?
-
+PATCH /dreams/:id/edit
+# FIX SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
 
 GET /transfer
   present a form to initiate a transfer of funds
@@ -54,13 +57,24 @@ SHOW /transfers
 
 
 
-IDEAS FOR LATER
-  # is dream.thanks considered a dreamer_user (has_many through) user submittable attribute --- required for project
+3 THINGS LEFT TO COMPLETE PROJECT
   # ADD A class level Active Record scope method (model object & class method name and URL to see the working feature e.g. Dreams.biggest_funded URL: /dreams/top_five_funded)
-  # ADD/ Include third party signup/login (how e.g. Devise/OmniAuth)
-  # ADD / Include nested resource "new" form to add a new dream (URL e.g. dreams/1/dreams/new)
+    
+  # ADD / Include nested resource "new" form to add a new dream (URL e.g. dreams/1/dreams/new) 
+    
+  # ADD / Include third party signup/login (how e.g. Devise/OmniAuth)
+
+  # CREATE / ADD DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()
+
+  # UPDATE Github checklist for project specs at https://gist.github.com/NiushaH/5f4f2b73657796b9f2a63dccc7b8d8e0
 
 
+
+QUESTIONS FOR PROJECT REVIEW
+  # is dream.thanks considered a dreamer_user (has_many through) user submittable attribute --- required for project??
+
+
+
+IDEAS FOR LATER
   *  build out to have multiple funders (possibly give dreamers the option of approving who to accept)
 
-# UPDATE Github checklist for project specs at https://gist.github.com/NiushaH/5f4f2b73657796b9f2a63dccc7b8d8e0

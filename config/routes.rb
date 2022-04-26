@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/register', to: 'users#new'
+
+  # REFACTOR RESOURCES AND RETHINK IF /FUNDS, /MYFUNDERS, and /DREAMERSISUPPORT SHOULD BE SCOPES
+  # resources :users, only: [:create, :show_dreams :as => :users_dreams, :show_investments :as => :user_funds, :show_my_funders, :show_dreamers_I_support] do
+  #   resources :dreams 
   post '/users', to: 'users#create'
   get 'users/:id/dreams' => 'users#show_dreams', :as => :users_dreams
   get 'users/:id/funds' => 'users#show_investments', :as => :user_funds
