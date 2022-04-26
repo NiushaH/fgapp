@@ -1,13 +1,14 @@
-<h1> Dream to Fund is <%= @dream.name %> for a total cost of $<%= @dream.cost %> </h1>
-<h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
+<h1> Dream to Fund a <%= @dream.name %> for a total cost of $<%= @dream.cost %> </h1>
 
 
 <% if @dream.funded? %>
+    <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
     <h3> Dream made real by: <%= @dream.funder_user.email %></h3>
+    <h3> <%= @dream.thanks %> </h3>
 <% else %>
     <%= form_for(@dream) do |d| %>
         <% if @dream.dreamer_user.email == @current_user.email %>
-            <p>This dream belongs to you.</p>
+            <p>This dream belongs to you and is awaiting a funder.</p>
         <% else %>
           <%= d.submit "Fund This Dream" %>
         <% end %>

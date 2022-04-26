@@ -1,8 +1,10 @@
-<h1> Thank Your Fairy Godmother </h1>
+<h1> Express Your Thanks </h1>
 
-<%= form_for @dream do |f| %>
-  <%= f.label 'Gratitude' %><br>
+<%= form_for(@dream) do |f| %>
+<h2> <%= "Tell #{@dream.funder_user.email} how their funding your dream to #{@dream.name} impacted your life." %> </h2>
+
+  <%= f.label 'Express Your Attitude of Gratitude Below:' %><br>
   <%= f.text_field :thanks %><br>
 
-  <%= f.submit "Submit Appreciation for Funding" %>
-<% end %>
+  <%= f.submit "Update Dream with My Appreciation, Noting How My Life Has Improved Since This Dream Came True" %>
+  <% end %>

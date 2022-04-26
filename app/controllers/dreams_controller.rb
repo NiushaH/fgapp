@@ -20,6 +20,17 @@ class DreamsController < ApplicationController
     # render a show view
   end
 
+  def edit
+    @dream = Dream.find(params[:id])
+    if @dream.update(params.require(:dream).permit(:thanks))
+      flash[:success] = "Note of appreciation added to dream come true."
+      redirect_to dream_path(@dream)
+    else
+      flash.now[:error] = "Note of thanks failed to save."
+      render :show
+    end
+  end
+
   def update 
     # raise params.inspect to debug form
     @dream = Dream.find(params[:id])
@@ -48,9 +59,9 @@ class DreamsController < ApplicationController
     # Rails magic .save method
     if @dream.save
       # assume new row was added to database
-      redirect_to "/dreams"
+      render :show
     else
-       render :new
+      redirect_to "/dreams"
     end
   end
 
