@@ -1,0 +1,8 @@
+<h1> Thank Your Fairy Godmother </h1>
+
+<%= form_for @dream do |f| %>
+  <%= f.label 'Gratitude' %><br>
+  <%= f.text_field :thanks %><br>
+
+  <%= f.submit "Submit Appreciation for Funding" %>
+<% end %>
