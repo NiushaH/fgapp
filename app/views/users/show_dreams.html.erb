@@ -1,22 +1,13 @@
 <h1>My Dreams</h1>
 
-    <h2>Awaiting Dreams</h2>
-    <% if @user.dream_requests.where(:funder_user == false).each do |dtf| %>
-          <ol>
-          <li><%= link_to "#{dtf.name} that costs $#{dtf.cost}", dream_path(dtf) %></a></li>
-          </ol>
-          <% end %>
-    <% else %>
-          <p>None</p>
+<ol>
+<h2>Awaiting Dreams</h2>
+    <% if @user.dream_requests.where(funder_user: nil).each do |dtf| %>
+      <li><%= link_to "#{dtf.name} that costs $#{dtf.cost}", dream_path(dtf) %></a></li>
     <% end %>
-    
-    <h2>Funded Dreams</h2>
-      <% if @user.dream_requests.where(:funder_user == true).each do |dr| %>
-        <ol>
-        <li><%= link_to "Your dream to #{dr.name} that cost $#{dr.cost} was funded by #{dr.funder_user.email}", dream_path(dr) %></a></li>
-        </ol>
-        <% end %>
-      <% else %>
-          <p>None</p>
-      <% end %>
-  
+<h2>Funded Dreams</h2>
+    <% elsif @user.dream_requests.where.not(funder_user: nil).each do |dr| %>
+      <li><%= link_to "Your dream to #{dr.name} that cost $#{dr.cost} was funded by #{dr.funder_user.email}", dream_path(dr) %></a></li>
+    <% end %>
+    </ol>
+    <% end %>
