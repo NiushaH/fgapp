@@ -4,10 +4,20 @@
 <h2>Awaiting Dreams</h2>
     <% if @user.dream_requests.where(funder_user: nil).each do |dtf| %>
       <li><%= link_to "#{dtf.name} that costs $#{dtf.cost}", dream_path(dtf) %></a></li>
-    <% end %>
-<h2>Funded Dreams</h2>
-    <% elsif @user.dream_requests.where.not(funder_user: nil).each do |dr| %>
-      <li><%= link_to "Your dream to #{dr.name} that cost $#{dr.cost} was funded by #{dr.funder_user.email}", dream_path(dr) %></a></li>
-    <% end %>
+      <% end %>
     </ol>
+    <% end %>
+    <% if @user.dream_requests.count == 0 %>
+      <p style="text-indent: 40px;"> Not awaiting any dreams to be funded. </p>
+    <% end %>
+
+<ol>
+<h2>Funded Dreams</h2>
+    <% if @user.dream_requests.where.not(funder_user: nil).each do |dr| %>
+      <li><%= link_to "Your dream to #{dr.name} that cost $#{dr.cost} was funded by #{dr.funder_user.email}", dream_path(dr) %></a></li>
+      <% end %>
+    </ol>
+    <% end %>
+    <% if @user.dream_requests.count == 0 %>
+      <p style="text-indent: 40px;"> None of my dreams have been funded yet. </p>
     <% end %>

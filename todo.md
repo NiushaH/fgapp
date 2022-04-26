@@ -9,11 +9,9 @@ POST /users
 
 SHOW /users/:id/dreams
   # make url :id dynamic
-  # SHOW DREAMS TO FUND AND THOSE FUNDED
 
 SHOW /users/:id/funds
   # make url :id dynamic
-  # SHOW DREAMS TO FUND AND THOSE FUNDED
 
 # CREATE DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()
 
