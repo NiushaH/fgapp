@@ -7,6 +7,8 @@ class Dream < ApplicationRecord
     validates :cost, :presence => true
     # check the object in Rails console by calling self.changes
     validate :different_funder
+    # scope :costs_more_than, ->(amount) { where('cost > ?', amount) }
+    
 
   def self.by_status(status)
     # ActiveRecord Scopes help build macros like this one below:

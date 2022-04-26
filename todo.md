@@ -9,12 +9,13 @@ POST /users
 
 SHOW /users/:id/dreams
   # make url :id dynamic
-  # REMOVE text array display of dreams details
+  # SHOW DREAMS TO FUND AND THOSE FUNDED
 
 SHOW /users/:id/funds
   # make url :id dynamic
-  # REMOVE text array display of dreams details
+  # SHOW DREAMS TO FUND AND THOSE FUNDED
 
+# CREATE DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()
 
 GET /login
   present a login form

@@ -1,7 +1,10 @@
-<h1>My Dreams</h1>
+<h1>Dreams I've Funded</h1>
 
 <ol>
 <%= @user.dreams_funded.each do |d| %>
   <li><%= link_to "#{d.name} from #{d.funder_user.email} that costs $#{d.cost}", dream_path(d) %></a></li>
   <% end %>
 </ol>
+
+# SHOW DREAMERS FEEDBACK / THANKS
+

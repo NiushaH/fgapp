@@ -20,10 +20,12 @@ class UsersController < ApplicationController
 
   def show_dreams
     @user = current_user
+    dreams = @user.dream_requests.includes(:dreamer_user_id == current_user.id)
   end
 
   def show_investments
     @user = current_user
+    investments = @user.dreams_funded.includes(:funder_user_id == current_user.id)
   end
 
 end
