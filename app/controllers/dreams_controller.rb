@@ -22,12 +22,12 @@ class DreamsController < ApplicationController
 
   def edit
     @dream = Dream.find(params[:id])
+    
     if @dream.update(params.require(:dream).permit(:thanks))
       flash[:success] = "Note of appreciation added to dream come true."
       redirect_to dream_path(@dream)
     else
       flash.now[:error] = "Note of thanks failed to save."
-      render :show
     end
   end
 
@@ -84,5 +84,6 @@ class DreamsController < ApplicationController
       #   User.new(params[:user])   WON'T WORK
       #   User.new(user_params)   SANITIZED SO USERS CAN'T HACK
       def dream_params
+        params.require("dream").permit(:name, :cost, :dreamer_user_id, :funder_user_id, :thanks)
       end
 end

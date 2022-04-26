@@ -1,10 +1,6 @@
-<h1> Express Your Thanks </h1>
+<h1> Express Your Thanks for Your Dream Come True </h1>
+<h2> <%= @dream.name %> for a total cost of $<%= @dream.cost %> </h2>
 
-<%= form_for(@dream) do |f| %>
-<h2> <%= "Tell #{@dream.funder_user.email} how their funding your dream to #{@dream.name} impacted your life." %> </h2>
 
-  <%= f.label 'Express Your Attitude of Gratitude Below:' %><br>
-  <%= f.text_field :thanks %><br>
+<%= render :partial => 'form', locals:{dreams: @dream} %>
 
-  <%= f.submit "Update Dream with My Appreciation, Noting How My Life Has Improved Since This Dream Came True" %>
-  <% end %>
