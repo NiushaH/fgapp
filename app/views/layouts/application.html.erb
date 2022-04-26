@@ -27,7 +27,9 @@
             <p>
             You are logged in as: <%= @current_user.email %></p>
             <%= link_to_unless_current "My Dreams", users_dreams_path(:id) %> |
-            <%= link_to_unless_current "My Investments in Others", user_funds_path(:id) %>
+            <%= link_to_unless_current "My Investments in Others", user_funds_path(:id) %> |
+            <%= link_to_unless_current "My Funders", show_my_funders_path(:id) %> |
+            <%= link_to_unless_current "Dreamers I Support", show_dreamers_I_support_path(:id) %>
             <% else %>
             <%= link_to_unless_current "Login", login_path %> |
             <%= link_to_unless_current "Register", register_path %> 

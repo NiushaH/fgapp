@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get 'users/:id/dreams' => 'users#show_dreams', :as => :users_dreams
   get 'users/:id/funds' => 'users#show_investments', :as => :user_funds
+  get 'users/:id/myfunders' => 'users#show_my_funders', :as => :show_my_funders
+  get 'users/:id/dreamersIsupport' => 'users#show_dreamers_I_support', :as => :show_dreamers_I_support
 
   # creates a session between a cookie and a browser
   get '/login', to: 'sessions#new'

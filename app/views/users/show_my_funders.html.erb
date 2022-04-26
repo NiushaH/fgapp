@@ -1,0 +1,10 @@
+<h1>Funders of My Dreams</h1>
+
+<% if @user.dreams_funded.where(:funder_user == true).each do |dr| %>
+    <ol>
+    <li><%= link_to "#{dr.funder_user.email} made your dream possible.", dream_path(dr) %></a></li>
+    </ol>
+    <% end %>
+<% else %>
+    <p>No dreams funded yet.</p>
+<% end %>
