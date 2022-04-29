@@ -46,7 +46,7 @@ SHOW /dreams
   - how do we know if a dream needs funding?
   - how do we only show only open dreams in the view?
 PATCH /dreams/:id/edit
-# FIX SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
+#  FIX SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
 
 GET /transfer
   present a form to initiate a transfer of funds
