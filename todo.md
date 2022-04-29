@@ -8,12 +8,9 @@ POST /users
   create the user in database, maybe validation
 
 SHOW /users/:id/dreams
-  # REFACTOR RESOURCES (to make this URL dynamic) AND RETHINK IF /FUNDS, /MYFUNDERS, 
   #   and /DREAMERSISUPPORT SHOULD BE SCOPES
-  # make url :id dynamic
 
 SHOW /users/:id/funds
-  # make url :id dynamic
 
 SHOW /users/:id/my_funders
   # SHOULD THIS BE A SCOPE WITHIN THE MODEL OR A VIEW??

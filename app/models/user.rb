@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :dream_requests, :class_name => "Dream", :foreign_key => "dreamer_user_id", dependent: :destroy
     has_many :dreams_funded, :class_name => "Dream", :foreign_key => "funder_user_id", dependent: :destroy
-    accepts_nested_attributes_for :dream_requests, reject_if: :reject_dream_requests
+    accepts_nested_attributes_for :dream_requests, reject_if: :reject_dream_requests, allow_destroy: true
 
     # Are these has many through, correct??
     has_many :funder_users, :class_name => "User", through: :dreams_funded
