@@ -7,12 +7,6 @@ Rails.application.routes.draw do
   # resources :users, only: [:create, :show_dreams :as => :users_dreams, :show_investments :as => :user_funds, :show_my_funders, :show_dreamers_I_support] do
   #   resources :dreams 
   post '/users', to: 'users#create'
-  get 'users/:dreamer_user_id' => 'users#show_current_user', :as => :my_account
-  get 'users/:dreamer_user_id/myfunders/:funder_user_id' => 'users#show_funder', :as => :funder_show
-  get 'users/:dreamer_user_id/dreams' => 'users#show_dreams', :as => :users_dreams
-  get 'users/:dreamer_user_id/funds' => 'users#show_investments', :as => :user_funds
-  get 'users/:dreamer_user_id/myfunders' => 'users#show_my_funders', :as => :show_my_funders
-  get 'users/:dreamer_user_id/dreamersIsupport' => 'users#show_dreamers_I_support', :as => :show_dreamers_I_support
 
   # creates a session between a cookie and a browser
   get '/login', to: 'sessions#new'
@@ -22,6 +16,15 @@ Rails.application.routes.draw do
 
   # Rails route helper
   resources :dreams
+
+  resources :users, only: [:show, :edit, :update] do
+    resources :dreams, only: [:new, :index, :show, :edit, :update, :destroy]
+  end
+  get 'users/:id/dreams/:id/funder/:id' => 'users#show_funder', :as => :show_funder
+  # get 'users/:id/dreams' => 'users#show_dreams', :as => :user_dreams  <-- same as user_dream_path
+  get 'users/:id/funds' => 'users#show_investments', :as => :user_funds
+  get 'users/:id/funders' => 'users#show_funders', :as => :funders
+  get 'users/:id/funded' => 'users#show_dreamers_I_support', :as => :show_dreamers_I_support
 
   root 'application#home'
   

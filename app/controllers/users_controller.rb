@@ -18,6 +18,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+  end
+
+  def show_funder
+    @user = current_user
+  end
+
   def show_dreams
     @user = current_user
     dreams = @user.dream_requests.includes(:dreamer_user_id == current_user.id)
@@ -28,7 +36,7 @@ class UsersController < ApplicationController
     investments = @user.dreams_funded.includes(:funder_user_id == current_user.id)
   end
 
-  def show_my_funders
+  def show_funders
     @user = current_user
     @my_funded_dreams = @user.dream_requests.where(funder_user_id: true)
   end
