@@ -9,7 +9,7 @@ class Dream < ApplicationRecord
     validates :cost, :presence => true
     # check the object in Rails console by calling self.changes
     validate :different_funder
-    # scope :costs_more_than, ->(amount) { where('cost > ?', amount) }
+    # scope :my_dream, -> { where('dreamer_user_id = @current_user.id', dreamer_user) }
     
 
   def self.by_status(status)

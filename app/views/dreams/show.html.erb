@@ -7,18 +7,21 @@
     <% if @dream.thanks == true %>  
         <h3> <%= "#{@dream.thanks}" %> </h3>
     <% elsif %>
+        <% @dream.funder_user.email != @current_user.email && @dream.thanks == false %>  
         <h3> <%= render :partial => 'form' %> </h3> 
     <% end %>
 <% else %>
-    <%= form_for(@dream) do |d| %>
-        <% if d.dreamer_user.email == @current_user.email %>
-            <p>This dream belongs to you and is awaiting a funder.</p>
-        <% else %>
-          <%= d.submit "Fund This Dream" %>
+    <% if @dream.dreamer_user.email == @current_user.email %>
+        <p>This dream belongs to you and is awaiting a funder.</p>
+    <% elsif %>
+        <% if @dream.dreamer_user.email != @current_user.email %>
+            <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
+            <%= form_for(@dream) do |d| %>
+                <%= d.submit("Fund This Dream") %>
+            <% end %>
         <% end %>
+    <% end %>
     <%# # Sends a patch request with a funder_user_id to update the dream available to fund
     # Can't update a dream that's already been funded -- or don't show dreams that have been funded on the All Dreams page
     # So that no one else uses this button to overwrite another funder who already funded this dream %> 
-    <% end %>
-  
 <% end %>

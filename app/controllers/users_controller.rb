@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def show_dreams
+  def show_all_user_dreams
     @user = current_user
     dreams = @user.dream_requests.includes(:dreamer_user_id == current_user.id)
   end
