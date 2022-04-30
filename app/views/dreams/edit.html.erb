@@ -1,5 +1,6 @@
 <h1> Express Your Thanks for Your Dream Come True </h1>
 <h2> <%= @dream.name %> for a total cost of $<%= @dream.cost %> </h2>
+<h3> Funded by: <%= @dream.funder_user.email %></h3>
 
 
 <%= render :partial => 'form', locals:{dreams: @dream} %>

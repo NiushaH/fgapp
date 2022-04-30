@@ -1,8 +1,8 @@
 <%= form_for(@dream) do |f| %>
-<h2> <%= "Share with #{@dream.funder_user.email} about how this experience impacted your life." %> </h2>
+<h2> <%= "Share with your funder and the FG App Community how this dream experience impacted your life." %> </h2>
 
-  <%= f.label 'Type an attitude of gratitude note' %><br>
+  <%= f.label 'Type your token of thanks below' %><br>
   <%= f.text_field :thanks %><br>
 
-  <%= f.submit "Add My Thanks" %>
+  <%= f.submit("Add Thanks") %>
   <% end %>

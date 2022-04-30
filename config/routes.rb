@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :dreams
 
   resources :users, only: [:show, :edit, :update] do
-    resources :dreams, only: [:new, :index, :show, :edit, :update, :destroy]
+    resources :dreams, only: [:new, :show, :edit, :update, :destroy]
   end
   # get 'users/:id/mydreams/:id/funder/:id' => 'users#show_funder', :as => :show_funder
   get 'users/:id/mydreams' => 'users#show_all_user_dreams', :as => :user_dreams_index

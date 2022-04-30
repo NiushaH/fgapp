@@ -2,9 +2,6 @@ class DreamsController < ApplicationController
   # Add step of logic to redirect those not logged in
   before_action :authentication_required
    
-  def new
-  end
-   
   # Ruby's built in parser understands the end of a line of code, but if you need to start
   # another line of code on the same line, you can use a semi colon
   # e.g.   def index; "blah blah blah" 
@@ -12,6 +9,9 @@ class DreamsController < ApplicationController
   #   raise = Dream.all.inspect
     # @dreams = Dream.all
     @dreams = Dream.by_status(:open)
+  end
+   
+  def new
   end
 
   def show
@@ -22,16 +22,18 @@ class DreamsController < ApplicationController
 
   def edit
     @dream = Dream.find(params[:id])
-    
-    if @dream.update(params.require(:dream).permit(:thanks))
-      flash[:success] = "Note of appreciation added to dream come true."
-      redirect_to dream_path(@dream)
-    else
-      flash.now[:error] = "Note of thanks failed to save."
-    end
   end
 
-  def update 
+  def update
+    @dream = Dream.find(params[:id])
+    if @dream.funder_user_id == nil
+      update_funder
+    else 
+      update_thanks
+    end
+  end
+  
+  def update_funder 
     # raise params.inspect to debug form
     @dream = Dream.find(params[:id])
     # Mixin module SessionHelper has current_user method instead of Application_Controller
@@ -40,6 +42,8 @@ class DreamsController < ApplicationController
     # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
     # if @dream.update(:funder_user => current_user) 
     # Refactor code to be more understandable
+
+    # AACCKK!!!  THIS IS CURRENTLY UPDATED THE FUNDED BY FIELD AS WELL AS ADDING THANKS, BUT NEITHER ARE PERSISTING TO DATABASE
     if @dream.funded_by(current_user) # returns true or false
       # Controller doesn't understand validity, it's the traffic cop that understands models and views -- green light go there, red light go there
       # This gives truthy or falsey value -- if it returns true, then the funder updated the column to fund the dream
@@ -48,6 +52,15 @@ class DreamsController < ApplicationController
       # assume that @dream.errors can explain why falsey with its message
       render :show
     end
+  end
+
+  def update_thanks 
+    @dream = Dream.find(params[:id])
+      if @dream.add_thanks(dream_params)
+        redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
+      else
+        render :show
+      end
   end
 
   def create
@@ -85,5 +98,5 @@ class DreamsController < ApplicationController
       #   User.new(user_params)   SANITIZED SO USERS CAN'T HACK
       def dream_params
         params.require("dream").permit(:name, :cost, :dreamer_user_id, :funder_user_id, :thanks)
-      end
+      end        
 end

@@ -3,11 +3,10 @@
 
 <% if @dream.funded? %>
     <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
-    <h3> Dream made real by: <%= @dream.funder_user.email %></h3>
-    <% if @dream.thanks == true %>  
-        <h3> <%= "#{@dream.thanks}" %> </h3>
-    <% elsif %>
-        <% @dream.funder_user.email != @current_user.email && @dream.thanks == false %>  
+    <h3> Funded by: <%= @dream.funder_user.email %></h3>
+    <% if @dream.thanked?(@dream) %>  
+        <h3> Words of Appreciation: <%= "#{@dream.thanks}" %> </h3>
+    <% else %>
         <h3> <%= render :partial => 'form' %> </h3> 
     <% end %>
 <% else %>

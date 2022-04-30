@@ -10,7 +10,6 @@ class Dream < ApplicationRecord
     # check the object in Rails console by calling self.changes
     validate :different_funder
     # scope :my_dream, -> { where('dreamer_user_id = @current_user.id', dreamer_user) }
-    
 
   def self.by_status(status)
     # ActiveRecord Scopes help build macros like this one below:
@@ -31,10 +30,20 @@ class Dream < ApplicationRecord
   # Models should have behavior; this method represents a moment in time  
   def funded_by(user)
     self.update(:funder_user => user)
+    save
   end
 
   def funded?
     # Force method to respond with a boolean with true or nil
     true if funder_user
+  end
+
+  def thanked?(dream)
+    !!dream.thanks == true
+  end
+
+  def add_thanks(dream)
+    self.update(:thanks => dream.thanks)
+    save
   end
 end
