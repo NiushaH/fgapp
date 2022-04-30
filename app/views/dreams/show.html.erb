@@ -4,6 +4,7 @@
 
 <% if @dream.funded? %>
     <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
+    <%# # TODO FIX (:id) on next line below to show users/8/dreams/18/funders/9 %>
     <h3><%= link_to "Funded by: #{@dream.funder_user.email}", show_funder_path(:id) %></h3>
     <% if @dream.thanked?(@dream) %>  
         <h3> Words of Appreciation: <%= "#{@dream.thanks}" %> </h3>

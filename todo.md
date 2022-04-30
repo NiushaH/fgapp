@@ -8,18 +8,16 @@ POST /users
   create the user in database, maybe validation
 
 SHOW /users/:id/mydreams
-  #  users dreams and their funding and thanking status
-
-SHOW /users/:id/
+  users dreams and their funding and thanking status
 
 SHOW /users/:id/my_funders
-  # SHOULD THIS BE A SCOPE WITHIN THE MODEL OR A VIEW??
-  # Refactor to use :funder_users from user model has_many, through: object associations
+  funders of user's dreams
+  # eventually incorporate this data into user profile view
+
 
 SHOW /users/:id/dreamers_I_funded
-  # Refactor to use :dreamer_users from user model has_many, through: object associations
-
-
+  dreamers funded by user
+  # eventually incorporate this data into user profile view
 
 GET /login
   present a login form
@@ -43,7 +41,7 @@ SHOW /dreams
   - how do we know if a dream needs funding?
   - how do we only show only open dreams in the view?
 PATCH /dreams/:id/edit
-#  FIX SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
+#  FIX DREAMS/# SHOW PAGE WITH PARTIAL FORM SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
 
 GET /transfer
   present a form to initiate a transfer of funds
@@ -65,6 +63,7 @@ SHOW /transfers
 
   # UPDATE Github checklist for project specs at https://gist.github.com/NiushaH/5f4f2b73657796b9f2a63dccc7b8d8e0
 
+  # delete user 8's jenny@flatiron.com dreams: 17, 21, 22-26
 
 
 QUESTIONS FOR PROJECT REVIEW
@@ -74,4 +73,6 @@ QUESTIONS FOR PROJECT REVIEW
 
 IDEAS FOR LATER
   *  build out to have multiple funders (possibly give dreamers the option of approving who to accept)
+  *  build user profile page with CRUD capabilities
+
 
