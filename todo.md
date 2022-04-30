@@ -10,6 +10,10 @@ POST /users
 SHOW /users/:id/mydreams
   users dreams and their funding and thanking status
 
+SHOW /users/:id/mydreams/:id/funder/:id
+  # fix url on show_funder_html page so :ids are dynamic and dream's funder_user object passes through to view
+
+
 SHOW /users/:id/my_funders
   funders of user's dreams
   # eventually incorporate this data into user profile view
