@@ -1,9 +1,10 @@
-<h1> Dream to Fund a <%= @dream.name %> for a total cost of $<%= @dream.cost %> </h1>
+<h1> Dream to Fund: </h1>
+<h2><%= @dream.name %> for a total cost of $<%= @dream.cost %></h2>
 
 
 <% if @dream.funded? %>
     <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
-    <h3> Funded by: <%= @dream.funder_user.email %></h3>
+    <h3><%= link_to "Funded by: #{@dream.funder_user.email}", show_funder_path(:id) %></h3>
     <% if @dream.thanked?(@dream) %>  
         <h3> Words of Appreciation: <%= "#{@dream.thanks}" %> </h3>
     <% else %>

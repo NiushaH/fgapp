@@ -43,7 +43,8 @@ class Dream < ApplicationRecord
   end
 
   def add_thanks(dream)
-    self.update(:thanks => dream.thanks)
+    binding.pry
+    self.update(:thanks => dream)
     save
   end
 end

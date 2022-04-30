@@ -7,16 +7,16 @@ GET /register
 POST /users
   create the user in database, maybe validation
 
-SHOW /users/:id/dreams
-  #   and /DREAMERSISUPPORT SHOULD BE SCOPES
+SHOW /users/:id/mydreams
+  #  users dreams and their funding and thanking status
 
-SHOW /users/:id/funds
+SHOW /users/:id/
 
 SHOW /users/:id/my_funders
   # SHOULD THIS BE A SCOPE WITHIN THE MODEL OR A VIEW??
   # Refactor to use :funder_users from user model has_many, through: object associations
 
-SHOW /users/:id/dreamers_I_support
+SHOW /users/:id/dreamers_I_funded
   # Refactor to use :dreamer_users from user model has_many, through: object associations
 
 

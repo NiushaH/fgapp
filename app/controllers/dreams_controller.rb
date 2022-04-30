@@ -55,12 +55,11 @@ class DreamsController < ApplicationController
   end
 
   def update_thanks 
-    @dream = Dream.find(params[:id])
-      if @dream.add_thanks(dream_params)
-        redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
-      else
-        render :show
-      end
+    if @dream.add_thanks(@dream.thanks)
+      redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
+    else
+      render :show
+    end
   end
 
   def create
