@@ -10,7 +10,11 @@ POST /users
 SHOW /users/:id/mydreams
   users dreams and their funding and thanking status
 
+SHOW /users/:id/dreams/new
+  Include nested resource "new" form to add a new dream (SEE APPLICATION.HTML.ERB link to "Request Funding for a Dream", i.e. users/1/dreams/new) 
+
 SHOW /users/:id/mydreams/:id/funder/:id
+  # FIX TOO DEEP NESTED RESOURCES
   # fix url on show_funder_html page so :ids are dynamic and dream's funder_user object passes through to view
 
 
@@ -46,6 +50,7 @@ SHOW /dreams
   - how do we only show only open dreams in the view?
 PATCH /dreams/:id/edit
 #  FIX DREAMS/# SHOW PAGE WITH PARTIAL FORM SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
+#  CREATE EDIT/UPDATE CAPABILITY FOR EXISTING FIELDS OF DREAM??
 
 GET /transfer
   present a form to initiate a transfer of funds
@@ -58,8 +63,6 @@ SHOW /transfers
 
 3 THINGS LEFT TO COMPLETE PROJECT
   # ADD A class level Active Record scope method (model object & class method name and URL to see the working feature e.g. Dreams.biggest_funded URL: /dreams/top_five_funded)
-    
-  # ADD / Include nested resource "new" form to add a new dream (URL e.g. dreams/1/dreams/new) 
     
   # ADD / Include third party signup/login (how e.g. Devise/OmniAuth)
 

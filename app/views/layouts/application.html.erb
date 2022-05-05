@@ -26,7 +26,7 @@
             <p></p>
             <p>
             You are logged in as: <%= @current_user.email %></p>
-            <%= link_to_unless_current "My Dreams", user_dreams_index_path(:id) %> |
+            <%= link_to_unless_current "My Dreams", user_dreams_index_path(@current_user.id) %> |
             <%# <%= link_to_unless_current "Dreams I've Funded", user_funds_path(:id) %> |
             <%# <%= link_to_unless_current "My Funders", funders_path(:id) %> | %>
             <%# <%= link_to_unless_current "Dreamers I Funded", show_dreamers_I_funded_path(:id) %> %> %>
@@ -44,7 +44,8 @@
                 <section>
                   <p><%= link_to_unless_current "Home", root_path %></p>
                   <p><%= link_to_unless_current "All Possible Dreams to Fund", dreams_path %></p>
-                  <p><%= link_to_unless_current "Request Funding for a Dream", new_dream_path %></p>
+                  <%# # ADD / Include nested resource "new" form to add a new dream (URL e.g. users/1/dreams/new)  %>
+                  <p><%= link_to_unless_current "Request Funding for a Dream", new_user_dream_path(@current_user.id) %></p>
                 </section>
           </ul>
 
