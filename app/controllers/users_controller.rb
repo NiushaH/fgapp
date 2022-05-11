@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def show_dreamer
+    @user = current_user
+  end
+
   def show_funder
     @user = current_user
   end
@@ -41,7 +45,7 @@ class UsersController < ApplicationController
     @my_funded_dreams = @user.dream_requests.where(funder_user_id: true)
   end
 
-  def show_dreamers_I_support
+  def show_dreamers_I_funded
     @user = current_user
     @dreamers_I_support = @user.dreams_funded.where(funder_user_id: current_user.id)
   end

@@ -1,10 +1,10 @@
 <h1>People Whose Lives I Impacted</h1>
 
+<ol>
 <% if  @user.dreams_funded.where(funder_user_id: @current_user.id).each do |dr| %>
-    <ol>
-    <li><%= link_to "#{dr.dreamer_user.email} who experienced #{dr.name}.", dream_path(dr) %></a></li>
-    </ol>
+    <li><%= link_to "#{dr.dreamer_user.email} whose dream experience was to #{dr.name}.", dream_path(dr) %></a></li>
     <% end %>
+</ol>
 <% else %>
     <p>No dreamers supported yet.</p>
 <% end %>

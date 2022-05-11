@@ -16,15 +16,16 @@ Rails.application.routes.draw do
 
   # Rails route helper
   resources :dreams
+  get 'users/:id' => 'users#show', :as => :show_dreamer
 
   resources :users, only: [:show, :edit, :update] do
     resources :dreams, only: [:new, :show, :edit, :update, :destroy]
   end
-  get 'users/:id/mydreams/:id/funder/:id' => 'users#show_funder', :as => :show_funder
+  get 'users/:id/' => 'users#show', :as => :show_funder
   get 'users/:id/mydreams' => 'users#show_all_user_dreams', :as => :user_dreams_index
-  # get 'users/:id/funds' => 'users#show_investments', :as => :user_funds
-  # get 'users/:id/funders' => 'users#show_funders', :as => :funders
-  # get 'users/:id/funded' => 'users#show_dreamers_I_funded', :as => :show_dreamers_I_funded
+  get 'users/:id/funds' => 'users#show_investments', :as => :user_funds
+  get 'users/:id/funders' => 'users#show_funders', :as => :funders
+  get 'users/:id/funded' => 'users#show_dreamers_I_funded', :as => :show_dreamers_I_funded
 
   root 'application#home'
   

@@ -1,19 +1,33 @@
-<h1> Dream to Fund: </h1>
-<h2><%= @dream.name %> for a total cost of $<%= @dream.cost %></h2>
+<h1><b> Dream Details </b></h1>
+<h2> <%= @dream.name %> for a total cost of $<%= @dream.cost %></h2>
 
 
 <% if @dream.funded? %>
-    <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
+    <% if @dream.dreamer_user.id == @current_user.id %>
+    <h3><b> This is your dream. </b></h3> 
+    <% else %>
+    <h2> Requested by: <%= link_to "#{@dream.dreamer_user.email}", show_dreamer_path(@current_user.id) %> </h2> 
+    <% end %> 
     <%# # TODO FIX (:id) on next line below to show users/8/dreams/18/funders/9 %>
-    <h3><%= link_to "Funded by: #{@dream.funder_user.email}", show_funder_path(:id) %></h3>
+    <% if @dream.funder_user.id == @current_user.id %>
+    <h3><b> Funded by you </b></h3> 
+    <% else %>
+    <h3> Funded by: <%= link_to "#{@dream.funder_user.email}", show_funder_path(:id) %></h3>
+    <% end %>
+
     <% if @dream.thanked?(@dream) %>  
         <h3> Words of Appreciation: <%= "#{@dream.thanks}" %> </h3>
     <% else %>
+        <% if @dream.dreamer_user.id == @current_user.id %>
         <h3> <%= render :partial => 'form' %> </h3> 
+        <% else %>
+        <h3> The dream requester has been notified to share the impact of their experience with you. </h3>
+        <% end %>
     <% end %>
 <% else %>
     <% if @dream.dreamer_user.email == @current_user.email %>
         <p>This dream belongs to you and is awaiting a funder.</p>
+        <%= link_to "UPDATE DREAM DETAILS", edit_dream_path(@dream.id) %>
     <% elsif %>
         <% if @dream.dreamer_user.email != @current_user.email %>
             <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
