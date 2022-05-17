@@ -25,43 +25,37 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
   end
 
+
   def update
     @dream = Dream.find(params[:id])
-    if @dream.funder_user_id == nil
-      update_funder
-    else 
-      update_thanks
-    end
-  end
-  
-  def update_funder 
-    # raise params.inspect to debug form
-    @dream = Dream.find(params[:id])
-    # Mixin module SessionHelper has current_user method instead of Application_Controller
-    # Rails implicitly assumes that you're building an application that has state so sessions are enabled in Rails
-    # @dream.funder_user_id = current_user
-    # if using strong_params you must sanitize the data, but since not triggering strong params rules for data aren't broken
-    # if @dream.update(:funder_user => current_user) 
-    # Refactor code to be more understandable
 
-    # AACCKK!!!  THIS IS CURRENTLY UPDATED THE FUNDED BY FIELD AS WELL AS ADDING THANKS, BUT NEITHER ARE PERSISTING TO DATABASE
-    if @dream.funded_by(current_user) # returns true or false
-      # Controller doesn't understand validity, it's the traffic cop that understands models and views -- green light go there, red light go there
-      # This gives truthy or falsey value -- if it returns true, then the funder updated the column to fund the dream
-      redirect_to @dream
-    else
-      # assume that @dream.errors can explain why falsey with its message
-      render :show
+    if @dream.funder_user_id.nil?
+      @dream.update(dream_params(:funder_user_id => @current_user.id))
     end
-  end
 
-  def update_thanks 
+    if @dream.funded_by(current_user) == true
+      redirect_to dream_path(@dream)
+    end
+
     if @dream.add_thanks(@dream.thanks)
+      @dream.update(dream_params(:thanks))
       redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
-    else
-      render :show
     end
+
+    if @dream.name != nil || @dream.cost > 0
+      @dream.update(dream_params(:name, :cost))
+    end
+
+    render dream_path(@dream)
   end
+
+  # def update_thanks 
+  #   if @dream.add_thanks(@dream.thanks)
+  #     redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
+  #   else
+  #     render :show
+  #   end
+  # end
 
   def create
     @dream = Dream.new
@@ -72,9 +66,9 @@ class DreamsController < ApplicationController
     # Rails magic .save method
     if @dream.save
       # assume new row was added to database
-      render :show
+      render dream_path(@dream)
     else
-      redirect_to "/dreams"
+      redirect_to dreams_path(@dream)
     end
   end
 
@@ -96,7 +90,7 @@ class DreamsController < ApplicationController
 
       #   User.new(params[:user])   WON'T WORK
       #   User.new(user_params)   SANITIZED SO USERS CAN'T HACK
-      def dream_params
-        params.require("dream").permit(:name, :cost, :dreamer_user_id, :funder_user_id, :thanks)
-      end        
+      def dream_params(*args)
+        params.require(:dream).permit(*args)
+      end
 end

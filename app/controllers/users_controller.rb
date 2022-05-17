@@ -50,4 +50,8 @@ class UsersController < ApplicationController
     @dreamers_I_support = @user.dreams_funded.where(funder_user_id: current_user.id)
   end
 
+  # private
+  #   def user_params(*args)
+  #     params.require(:user).permit(*args)
+  #   end
 end

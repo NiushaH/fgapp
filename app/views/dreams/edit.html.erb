@@ -1,7 +1,13 @@
-<h1> Express Your Thanks for Your Dream Come True </h1>
-<h2> <%= @dream.name %> for a total cost of $<%= @dream.cost %> </h2>
-<h3> Funded by: <%= @dream.funder_user.email %></h3>
+<h1> Make Updates to Your Dream Experience </h1>
+<h2> <%= @dream.name %> -- $<%= @dream.cost %> </h2></br>
+<br>
+<%= form_for(@dream) do |f| %>
 
-
-<%= render :partial => 'form', locals:{dreams: @dream} %>
-
+  <p> <%= f.label 'Update the name or cost of your dream experience:' %> </p> <br> 
+  <p> <%= f.text_field(:name) %></p>
+<br>
+<br>
+  <p> <%= f.label 'Update cost:' %> </p> 
+  <p> <%= f.text_field :cost %></p>
+  <%= f.submit("Update Name and/or Cost of Dream") %>
+  <% end %>

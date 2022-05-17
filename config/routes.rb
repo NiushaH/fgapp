@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   # Rails route helper
-  resources :dreams
+  resources :dreams, only: [:index, :new, :show, :edit, :update, :destroy]
   get 'users/:id' => 'users#show', :as => :show_dreamer
 
   resources :users, only: [:show, :edit, :update] do
