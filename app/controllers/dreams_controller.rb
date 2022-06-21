@@ -12,7 +12,8 @@ class DreamsController < ApplicationController
   end
    
   def new
-    # @dream = Dream.new
+    @dream = Dream.new(dream_params)
+    Dream.create
   end
 
   def show
@@ -25,37 +26,12 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
   end
 
-
   def update
     @dream = Dream.find(params[:id])
-
-    if @dream.funder_user_id.nil?
-      @dream.update(dream_params(:funder_user_id => @current_user.id))
-    end
-
-    if @dream.funded_by(current_user) == true
-      redirect_to dream_path(@dream)
-    end
-
-    if @dream.add_thanks(@dream.thanks)
-      @dream.update(dream_params(:thanks))
-      redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
-    end
-
-    if @dream.name != nil || @dream.cost > 0
-      @dream.update(dream_params(:name, :cost))
-    end
-
-    render dream_path(@dream)
+    @dream.update(dream_params)
+    @dream.funded_by(current_user)
+    redirect_to dream_path(@dream.id)  
   end
-
-  # def update_thanks 
-  #   if @dream.add_thanks(@dream.thanks)
-  #     redirect_to dream_path(@dream), :notice => "Your token of thanks has been saved."
-  #   else
-  #     render :show
-  #   end
-  # end
 
   def create
     @dream = Dream.new
@@ -66,19 +42,12 @@ class DreamsController < ApplicationController
     # Rails magic .save method
     if @dream.save
       # assume new row was added to database
-      render dream_path(@dream)
+      redirect_to dream_path(@dream.id)
     else
-      redirect_to dreams_path(@dream)
+      render dreams_path(@dream)
     end
   end
-
-   # What information do I need to fund a dream?
-   # Dream Name
-   # Cost of dream
-   # params["Dream"]
-
-   # dreamer_user_id
-   
+  
    private
       # Strong Params is required only when
       #   You are mass assigning data from params, like the example below:
@@ -90,7 +59,8 @@ class DreamsController < ApplicationController
 
       #   User.new(params[:user])   WON'T WORK
       #   User.new(user_params)   SANITIZED SO USERS CAN'T HACK
-      def dream_params(*args)
-        params.require(:dream).permit(*args)
+      def dream_params
+        params.permit(:name, :cost, :funder_user_id, :thanks)
       end
-end
+    end
+

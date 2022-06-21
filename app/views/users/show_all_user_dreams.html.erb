@@ -13,7 +13,7 @@
 
 <ol>
 <h2>Funded Dreams</h2>
-<h3>Upcoming Experience, Need To Thank Funders</h3>
+<h3>Need To Thank Funders</h3>
     <% if (@user.dream_requests.where.not(funder_user_id: nil).where(thanks: nil)).each do |dr| %>
       <li><%= "Your dream to #{dr.name} that cost $#{dr.cost} was funded by #{dr.funder_user.email}, "%><%= link_to "click here to send a note of thanks", dream_path(dr) %></a></li>
       <% end %>

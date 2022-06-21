@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   # private
-  #   def user_params(*args)
-  #     params.require(:user).permit(*args)
-  #   end
+    # def user_params(*args)
+    #   params.require(:user).permit(*args)
+    # end
 end

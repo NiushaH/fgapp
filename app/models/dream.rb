@@ -5,6 +5,7 @@ class Dream < ApplicationRecord
     # Turned off belongs_to validation with optional code on line below
     # SHOULD I ADD THIS: , :foreign_key => "dreams_funded_id"
     belongs_to :funder_user, :class_name => "User", :optional => true
+    attr_accessor :name, :cost
     validates :name, :length => {in: 3..100}
     validates :cost, :presence => true
     # check the object in Rails console by calling self.changes
@@ -27,9 +28,14 @@ class Dream < ApplicationRecord
     end
   end
 
+  def update(dream)
+    self.update(dream_params)
+    save
+  end
+
   # Models should have behavior; this method represents a moment in time  
   def funded_by(user)
-    self.update(:funder_user => user)
+    self.update(:funder_user_id => user.id)
     save
   end
 
@@ -43,6 +49,7 @@ class Dream < ApplicationRecord
   end
 
   def add_thanks(dream)
+    @dream = Dream.find(params[:id])
     self.update(:thanks => dream)
     save
   end

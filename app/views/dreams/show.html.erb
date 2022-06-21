@@ -1,7 +1,6 @@
 <h1><b> Dream Details </b></h1>
 <h2> <%= @dream.name %> for a total cost of $<%= @dream.cost %></h2>
 
-
 <% if @dream.funded? %>
     <% if @dream.dreamer_user.id == @current_user.id %>
     <h3><b> This is your dream. </b></h3> 
@@ -19,7 +18,7 @@
         <h3> Words of Appreciation: <%= "#{@dream.thanks}" %> </h3>
     <% else %>
         <% if @dream.dreamer_user.id == @current_user.id %>
-        <h3> <%= render :partial => 'form' %> </h3> 
+        <h3> <%= render partial: 'form' %> </h3> 
         <% else %>
         <h3> The dream requester has been notified to share the impact of their experience with you. </h3>
         <% end %>
@@ -30,13 +29,10 @@
         <%= link_to "UPDATE DREAM DETAILS", edit_dream_path(@dream.id) %>
     <% elsif %>
         <% if @dream.dreamer_user.email != @current_user.email %>
-            <h2> Requested by: <%= @dream.dreamer_user.email %> </h2> 
-            <%= form_for(@dream) do |d| %>
+            <h2> Requested by: <%= link_to "#{@dream.dreamer_user.email}", show_dreamer_path(@dream.dreamer_user_id) %> </h2> 
+            <%= form_for @dream do |d| %>
                 <%= d.submit("Fund This Dream") %>
             <% end %>
         <% end %>
     <% end %>
-    <%# # Sends a patch request with a funder_user_id to update the dream available to fund
-    # Can't update a dream that's already been funded -- or don't show dreams that have been funded on the All Dreams page
-    # So that no one else uses this button to overwrite another funder who already funded this dream %> 
 <% end %>

@@ -70,7 +70,7 @@ SHOW /transfers
 
   # UPDATE Github checklist for project specs at https://gist.github.com/NiushaH/5f4f2b73657796b9f2a63dccc7b8d8e0
 
-  # delete user 8's jenny@flatiron.com dreams: 17, 21, 22-26
+  # delete user 8's jenny@flatiron.com dreams: 16, 17, 21, 22-26
 
 
 QUESTIONS FOR PROJECT REVIEW
@@ -81,5 +81,5 @@ QUESTIONS FOR PROJECT REVIEW
 IDEAS FOR LATER
   *  build out to have multiple funders (possibly give dreamers the option of approving who to accept)
   *  build user profile page with CRUD capabilities
-
+  *  be able to edit thanks
 

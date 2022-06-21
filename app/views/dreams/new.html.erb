@@ -1,3 +1,4 @@
+
 <h1>Fund a Dream</h1>
 
 <%# #Lowest level of abstraction -- most explicit control
@@ -23,8 +24,22 @@
 
   <%# <%= hidden_field_tag "dreamer_id", @current_user.id %>
 
-  <%= submit_tag %>
+  <%= submit_tag "Request Dream Funding" %>
 <% end %>
 
 <%# # Highest level of abstraction -- saves time, most amount of assumptions built into Rails
 <%= form_for(@dream) %>
+<% form_for(@dream) do |f| %>
+    <div>
+    <%= f.label :Name %> 
+    <%= f.text_field(:name) %>
+    </div>
+    <div>
+    <%= f.label :Cost %>
+    <%= f.text_field(:cost) %>
+    </div>
+    <div>
+    <%= f.submit "Request Dream Funding" %>
+    </div>
+<% end %>
+
