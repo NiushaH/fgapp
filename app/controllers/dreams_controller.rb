@@ -28,7 +28,6 @@ class DreamsController < ApplicationController
 
   def update
     @dream = Dream.find(params[:id])
-    @dream.update(dream_params)
     @dream.funded_by(current_user)
     redirect_to dream_path(@dream.id)  
   end
