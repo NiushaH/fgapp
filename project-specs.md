@@ -2,6 +2,7 @@ Specifications for the Rails Assessment
 Specs:
 
 X Using Ruby on Rails for the project
+# Be sure destroy is possible for Dreams class
 X Include at least one has_many relationship (x has_many y; e.g. User has_many Dreams)
 X Include at least one belongs_to relationship (x belongs_to y; e.g. Dream belongs_to User)
 X Include at least two has_many through relationships (x has_many y through z; e.g. Funder_User has_many Dreamers Supported through Dream Funding, Dreamer_user has_many Funders through Dreams Funded)
