@@ -1,6 +1,12 @@
 
 <h1>Fund a Dream</h1>
 
+<% flash.each do |type, msg| %>
+  <div>
+    <p style="color: red;"><%= msg %></p>
+  </div>
+<% end %>
+
 <%# #Lowest level of abstraction -- most explicit control
 <form action="/dreams" method="POST"> %>
 
@@ -29,17 +35,17 @@
 
 <%# # Highest level of abstraction -- saves time, most amount of assumptions built into Rails
 <%= form_for(@dream) %>
-<% form_for(@dream) do |f| %>
-    <div>
-    <%= f.label :Name %> 
-    <%= f.text_field(:name) %>
-    </div>
-    <div>
-    <%= f.label :Cost %>
-    <%= f.text_field(:cost) %>
-    </div>
-    <div>
-    <%= f.submit "Request Dream Funding" %>
-    </div>
-<% end %>
+<%# <% form_for(@dream) do |f| %>
+    <%# <div> %>
+    <%# <%= f.label :Name %>
+    <%# <%= f.text_field(:name) %>
+    <%# </div> %>
+    <%# <div> %>
+    <%# <%= f.label :Cost %>
+    <%# <%= f.text_field(:cost) %>
+    <%# </div> %>
+    <%# <div> %>
+    <%# <%= f.submit "Request Dream Funding" %>
+    <%# </div> %>
+<%# <% end %>
 

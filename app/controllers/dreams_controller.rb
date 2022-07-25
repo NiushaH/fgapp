@@ -57,6 +57,10 @@ class DreamsController < ApplicationController
     if @dream.save
       # assume new row was added to database
       redirect_to dream_path(@dream.id)
+    elsif params["Cost"] == ""
+      redirect_to new_dream_path, notice: "Cost of Dream is missing and required for dream entry, please try again."
+    elsif params["Name"] == ""
+      redirect_to new_dream_path, notice: "Name of Dream is missing and required for dream entry, please try again."
     else
       render dreams_path(@dream)
     end

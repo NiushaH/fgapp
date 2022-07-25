@@ -3,6 +3,7 @@ Planning a Timer App with Endpoints Needed for App to Work
 GET /register
   should present a sign up form
   users have an email
+  # eventually validate email
 
 POST /users
   create the user in database, maybe validation
@@ -10,18 +11,14 @@ POST /users
 SHOW /users/:id/mydreams
   users dreams and their funding and thanking status
 
-SHOW /users/:id/dreams/new
-  Include nested resource "new" form to add a new dream (SEE APPLICATION.HTML.ERB link to "Request Funding for a Dream", i.e. users/1/dreams/new) 
-
-SHOW /users/:id/mydreams/:id/funder/:id
-  # FIX TOO DEEP NESTED RESOURCES
-  # fix url on show_funder_html page so :ids are dynamic and dream's funder_user object passes through to view
+SHOW /dreams/new
+  # eventually validate if funding is an integer
+  # format integers into dollar figures (or choose currency)
 
 
 SHOW /users/:id/my_funders
   funders of user's dreams
   # eventually incorporate this data into user profile view
-
 
 SHOW /users/:id/dreamers_I_funded
   dreamers funded by user
