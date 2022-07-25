@@ -8,7 +8,7 @@ X Using Ruby on Rails for the project
  Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Funder has_many Dreamers through Dreams, Dreamer has_many Funders through Dreams)
  The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. dream.thanks)
  Include reasonable validations for simple model objects (list of model objects with validations e.g. Dream Name, Dream Cost)
-# Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+ Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. Dream.expensive_dreams_to_fund URL: /dreams)
  Include signup
  Include login
  Include logout

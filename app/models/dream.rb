@@ -9,7 +9,10 @@ class Dream < ApplicationRecord
     validates :cost, :presence => true
     # check the object in Rails console by calling self.changes
     # validate :different_funder
-    # scope :my_dream, -> { where('dreamer_user_id = @current_user.id', dreamer_user) }
+    
+    scope :dreams_you_can_still_fund, -> { where(funder_user_id: nil) }
+    scope :expensive_dreams_to_fund, -> { dreams_you_can_still_fund.where("Cost > 5000") }
+    scope :order_by_funded_dream_and_cost, -> {status(:funded).order(:cost)}
 
   def self.by_status(status)
     # ActiveRecord Scopes help build macros like this one below:

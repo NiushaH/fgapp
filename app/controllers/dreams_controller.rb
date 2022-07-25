@@ -1,7 +1,8 @@
 class DreamsController < ApplicationController
   # Add step of logic to redirect those not logged in
   before_action :authentication_required
-   
+  # has_scope :expensive_dreams_to_fund, type: :boolean
+
   # Ruby's built in parser understands the end of a line of code, but if you need to start
   # another line of code on the same line, you can use a semi colon
   # e.g.   def index; "blah blah blah" 

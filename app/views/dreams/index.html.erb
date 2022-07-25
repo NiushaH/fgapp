@@ -1,7 +1,8 @@
 <h1>Real People's Dreams... Who Would You Like to Invest In?</h1>
-
+<br>
 <ol>
-<% @dreams.where.not(dreamer_user_id: @current_user.id).each do |d| %>
+<% @dreams.expensive_dreams_to_fund.each do |d| %>
   <li><%= link_to "#{d.name} from #{d.dreamer_user.email} that costs $#{d.cost}", dream_path(d) %></a></li>
+  <br>
 <% end %>
 </ol>
