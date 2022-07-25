@@ -1,14 +1,12 @@
 <h1> Make Updates to Your Dream Experience </h1>
 <h2> <%= @dream.name %> -- $<%= @dream.cost %> </h2></br>
 <br>
-<%= form_for(@dream) do |d| %>
-
-  <p> <%= d.label 'Update the name or cost of your dream experience:' %> </p> <br> 
-  <p> <%= d.text_field(:name) %></p>
-  <br>
-  <br>
-  <p> <%= d.label 'Update cost:' %> </p> 
-  <p> <%= d.text_field(:cost) %> </p>
-
-  <%= d.submit("Save/Update Name and/or Cost of Dream") %>
-<% end %>
+  <%= form_for(@dream) do |d| %>
+    <p> <%= d.label 'Update the name or cost of your dream experience:' %> </p> <br> 
+    <p> <%= d.text_field(:name) %></p>
+    <br>
+    <br>
+    <p> <%= d.label 'Update cost:' %> </p> 
+    <p> <%= d.text_field(:cost) %> </p>
+    <%= d.submit("Save/Update Name and/or Cost of Dream") %>
+  <% end %>

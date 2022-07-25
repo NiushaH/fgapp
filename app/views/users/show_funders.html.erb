@@ -2,7 +2,7 @@
 
 <ol>
 <% if @user.dream_requests.where.not(thanks: true).where.not(funder_user_id: nil).each do |dr| %>
-    <li><%= link_to "#{dr.funder_user.email}", dream_path(dr) %></a></li>
+    <li><%= link_to "#{dr.funder_user.email}", show_funder_path(dr.funder_user_id) %></a> funded <%= link_to "#{dr.name}", dream_path(dr) %></li>
     <% end %>
 </ol>
 <% else %>

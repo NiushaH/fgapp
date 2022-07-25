@@ -11,7 +11,7 @@
     <% if @dream.funder_user.id == @current_user.id %>
     <h3><b> Funded by you </b></h3> 
     <% else %>
-    <h3> Funded by: <%= link_to "#{@dream.funder_user.email}", show_funder_path(:id) %></h3>
+    <h3> Funded by: <%= link_to "#{@dream.funder_user.email}", show_funder_path(@dream.funder_user_id) %></h3>
     <% end %>
 
     <% if @dream.thanked?(@dream) %>  

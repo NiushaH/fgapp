@@ -41,10 +41,4 @@ class Dream < ApplicationRecord
   def thanked?(dream)
     !!dream.thanks == true
   end
-
-  def add_thanks(dream)
-    @dream = Dream.find(params[:id])
-    self.update(:thanks => dream)
-    save
-  end
 end

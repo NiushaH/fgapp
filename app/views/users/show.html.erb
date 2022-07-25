@@ -1,1 +1,3 @@
 <h1><b> User Profile Info </b></h1>
+<% @funder_user = User.find(params[:id]) %>
+All we know about your funder is that their email address is <%= @funder_user.email %>.

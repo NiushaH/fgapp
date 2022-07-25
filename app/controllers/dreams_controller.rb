@@ -29,7 +29,12 @@ class DreamsController < ApplicationController
   def update
     @dream = Dream.find(params[:id])
     @dream.funded_by(current_user)
-    redirect_to dream_path(@dream.id)  
+    if @dream.changed?
+      @dream.update(name: dream_params[:dream][:name], cost: dream_params[:dream][:cost], thanks: dream_params[:dream][:thanks])
+      @dream.save
+      raise params.inspect
+    end
+    redirect_to dream_path(@dream.id)
   end
 
   def create
