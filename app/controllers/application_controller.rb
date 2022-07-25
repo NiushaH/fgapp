@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Preferred way to code because using DSL program--> Use Ruby idioms to mixin a Ruby module into a class with OOP use include (makes methods instance methods) or extend (makes methods class methods)
   # View actions are part of controller (to have their own scope)
+  add_flash_types :success, :error, :warning, :info
   include ApplicationHelper::SessionsHelper
   
   # Controller filter
