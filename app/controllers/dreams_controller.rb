@@ -28,12 +28,22 @@ class DreamsController < ApplicationController
 
   def update
     @dream = Dream.find(params[:id])
-    @dream.funded_by(current_user)
-    if @dream.changed?
-      @dream.update(name: dream_params[:dream][:name], cost: dream_params[:dream][:cost], thanks: dream_params[:dream][:thanks])
-      @dream.save
-      raise params.inspect
+    dream_name = @dream.name
+    dream_cost = @dream.cost
+
+    if params["commit"] == "Save/Update Name and/or Cost of Dream"  
+      if dream_name != params[:dream][:name]
+        @dream.update(name: params[:dream][:name])
+      end
+      if dream_cost != params[:dream][:cost]
+        @dream.update(cost: params[:dream][:cost])
+      end
+    elsif params["commit"] == "Add Thanks"  
+      @dream.update(thanks: params[:dream][:thanks])
+    elsif params["commit"] == "Fund This Dream"  
+      @dream.update(:funder_user_id => @current_user.id)
     end
+
     redirect_to dream_path(@dream.id)
   end
 
@@ -68,3 +78,4 @@ class DreamsController < ApplicationController
       end
     end
 
+# raise params.inspect
