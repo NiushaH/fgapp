@@ -35,7 +35,8 @@
         </div>
         <%= f.submit :signin%>
     <% end %>
-    Don't have an account? <%= link_to "Sign up", signup_path, class: "show-signup" %> here.
+    Don't have an account? <%= link_to "Register", register_path, class: "show-signup" %> here.
+    <br>
     <p>Social Login:</p>
     <div class="third-party-login">
         <%= button_to "Log in with Google", '/auth/google_oauth2'  %>
