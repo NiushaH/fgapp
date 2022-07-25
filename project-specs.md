@@ -14,11 +14,11 @@ X Using Ruby on Rails for the project
  Include logout
 # Include third party signup/login (how e.g. Devise/OmniAuth)
  Include nested resource show or index (URL e.g. users/10/mydreams, users/10/funders, users/10/funded) 
-# Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+ Include nested resource "new" form (URL e.g. user/1/dreams/new)
  Include form display of validation errors (form URL e.g. /dreams/new)
 
 Confirm:
  The application is pretty DRY
  Limited logic in controllers
- # Views use helper methods if appropriate
+ Views use helper methods if appropriate (e.g. logged_in?, current_user)
  Views use partials if appropriate

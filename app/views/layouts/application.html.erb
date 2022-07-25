@@ -45,7 +45,7 @@
                   <p><%= link_to_unless_current "Home", root_path %></p>
                   <p><%= link_to_unless_current "All Possible Dreams to Fund", dreams_path %></p>
                   <%# # ADD / Include nested resource "new" form to add a new dream (URL e.g. users/1/dreams/new)  %>
-                  <p><%= link_to_unless_current "Request Funding for a Dream", new_dream_path  %></p>
+                  <p><%= link_to_unless_current "Request Funding for a Dream", new_user_dream_path(@current_user.id)  %></p>
                 </section>
           </ul>
 

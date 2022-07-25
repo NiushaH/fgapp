@@ -41,13 +41,14 @@ POST /dream
 GET /dreams/:id
   - Show details of the dream funding request
   - Fund a dream
+  - Share thanks
+  # eventually send email to funder when thanks added from Dreamer
 SHOW /dreams
   show all users dreams
   - how do we know if a dream needs funding?
   - how do we only show only open dreams in the view?
 PATCH /dreams/:id/edit
-#  FIX DREAMS/# SHOW PAGE WITH PARTIAL FORM SO THAT THANKS SAVES AND THAT CONDITIONAL ON DREAM SHOW PAGE DISPLAYS CORRECTLY
-#  CREATE EDIT/UPDATE CAPABILITY FOR EXISTING FIELDS OF DREAM??
+  - update name or cost of dream
 
 GET /transfer
   present a form to initiate a transfer of funds
