@@ -7,6 +7,7 @@ class Dream < ApplicationRecord
     belongs_to :funder_user, :class_name => "User", :optional => true
     validates :name, :length => {in: 3..100}
     validates :cost, :presence => true
+    # consider adding validation of numericality: { only_integer: true }
     # check the object in Rails console by calling self.changes
     # validate :different_funder
     
