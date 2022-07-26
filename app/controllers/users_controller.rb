@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
   def new
     # teach application how to remember people
     if session[:current_user_id]

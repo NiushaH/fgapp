@@ -20,10 +20,11 @@ class SessionsController < ApplicationController
       # use byebug to inspect what the auth method returns
       @user = User.from_omniauth(auth)
       if @user.valid?
-        session[:user_id] = @user.id
-        redirect_to @user
+        # session[:user_id] = @user.id
+        login(@user)
+        redirect_to "/"
       else
-        render :new
+        redirect_to "/login"
       end
     end
 

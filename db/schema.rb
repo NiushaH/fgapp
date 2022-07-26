@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_29_185728) do
+ActiveRecord::Schema.define(version: 2022_07_25_220022) do
 
   create_table "dreams", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2022_04_29_185728) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.integer "funder_user_score"
+    t.string "uid"
+    t.string "provider"
   end
 
 end

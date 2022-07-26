@@ -13,4 +13,10 @@ class User < ApplicationRecord
         attributes['name', 'cost'].blank?
     end
 
+    def self.from_omniauth(auth)
+        self.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |u|
+            u.email = auth['info']['email']
+            u.password = SecureRandom.hex(20)
+        end
+    end
 end

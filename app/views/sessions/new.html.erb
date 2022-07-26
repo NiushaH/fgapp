@@ -4,6 +4,9 @@
 <h2><%= flash[:notice] %></h2>
 <% end %>
 
+<h1> New here?  Click here to <%= link_to_unless_current "Register", register_path %></a></h1>
+
+
 <%= form_tag("/sessions") do%>
   <p>
     <%= label_tag "email", "Email:" %>
@@ -12,34 +15,17 @@
   <p>
     <%= label_tag "password", "Password:" %>
     <% if @user && @user.errors[:password] %>
-    <p>Please include a password.</p>
-    <% end %>
-
     <%= password_field_tag "password" %>
+    <% end %>
   </p>
 
   <%= submit_tag "Login" %>
 <% end %>
 
 <h1>Omniauth Login</h1>
+  <%# <p>Social Login:</p> %>
+  <div class="third-party-login">
+      <%= button_to "Register for FGApp & Log in with Google", '/auth/google_oauth2'  %>
+      <%# <%= button_to "Log in with Github", '/auth/github'  %>
+  </div>
 
-<div id="login-form">
-    <%= form_with(model: @user, url: "/login") do |f| %>
-        <div class="form-control">
-            <%= f.label :email, class: "form-label" , class: "form-label" %>
-            <%= f.email_field :email, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label :password, class: "form-label" , class: "form-label" %>
-            <%= f.password_field :password, class: "form-input" %>
-        </div>
-        <%= f.submit :signin%>
-    <% end %>
-    Don't have an account? <%= link_to "Register", register_path, class: "show-signup" %> here.
-    <br>
-    <p>Social Login:</p>
-    <div class="third-party-login">
-        <%= button_to "Log in with Google", '/auth/google_oauth2'  %>
-        <%= button_to "Log in with Github", '/auth/github'  %>
-    </div>
-</div>

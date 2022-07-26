@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get '/users/reset_password', to: 'users#reset_form'
   post '/users/reset_password', to: 'users#password_reset'
 
+  # directs auth callback response to SessionsController omniauth action with params[:provider] set to google_oauth2
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   # creates a session between a cookie and a browser
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 

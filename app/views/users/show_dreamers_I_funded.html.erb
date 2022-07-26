@@ -2,7 +2,7 @@
 
 <ol>
 <% if  @user.dreams_funded.where(funder_user_id: @current_user.id).each do |dr| %>
-    <li><%= link_to "#{dr.dreamer_user.email} whose dream experience was to #{dr.name}.", dream_path(dr) %></a></li>
+    <li><%= link_to "#{dr.dreamer_user.email}", user_path(dr.dreamer_user_id) %> </a> whose dream experience was to <%= link_to "#{dr.name}", dream_path(dr) %></a>. </li>
     <% end %>
 </ol>
 <% else %>

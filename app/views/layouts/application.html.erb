@@ -32,8 +32,7 @@
             <%= link_to_unless_current "Dreamers I Funded", show_dreamers_I_funded_path(@current_user.id) %>
             <% else %>
             <%= link_to_unless_current "Home", root_path %> |
-            <%= link_to_unless_current "Login", login_path %> 
-            <%#| <%= link_to_unless_current "Register", register_path %> 
+            <%= link_to_unless_current "Login", login_path %>
             <% end %>
           </ul>
         </section>
