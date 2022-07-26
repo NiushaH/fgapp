@@ -67,6 +67,11 @@ class DreamsController < ApplicationController
     end
   end
   
+  def destroy
+    Dream.find(params[:id]).destroy
+    redirect_to user_dreams_index_path(@current_user.id)
+  end
+
    private
       # Strong Params is required only when
       #   You are mass assigning data from params, like the example below:

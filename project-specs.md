@@ -13,7 +13,7 @@ X Include a class level ActiveRecord scope method (model object & class method n
 X Include signup
 X Include login
 X Include logout
-# Include third party signup/login (how e.g. Devise/OmniAuth)
+X Include third party signup/login (how e.g. Devise/OmniAuth)
 X Include nested resource show or index (URL e.g. users/10/mydreams, users/10/funders, users/10/funded) 
 X Include nested resource "new" form (URL e.g. user/1/dreams/new)
 X Include form display of validation errors (form URL e.g. /dreams/new)

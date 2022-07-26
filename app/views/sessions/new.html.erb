@@ -4,9 +4,6 @@
 <h2><%= flash[:notice] %></h2>
 <% end %>
 
-<h1> New here?  Click here to <%= link_to_unless_current "Register", register_path %></a></h1>
-
-
 <%= form_tag("/sessions") do%>
   <p>
     <%= label_tag "email", "Email:" %>
@@ -16,16 +13,13 @@
     <%= label_tag "password", "Password:" %>
     <% if @user && @user.errors[:password] %>
     <%= password_field_tag "password" %>
-    <% end %>
   </p>
+<% end %>
 
-  <%= submit_tag "Login" %>
+  <%= submit_tag "Login" %>  Or, if you're new here, click <%= link_to_unless_current "Register", register_path %></a> to join now.</h2>
 <% end %>
 
 <h1>Omniauth Login</h1>
-  <%# <p>Social Login:</p> %>
-  <div class="third-party-login">
-      <%= button_to "Register for FGApp & Log in with Google", '/auth/google_oauth2'  %>
-      <%# <%= button_to "Log in with Github", '/auth/github'  %>
-  </div>
+      <%= button_to "Log in with Google", '/auth/google_oauth2' %>
+
 
