@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FGApp uses the Ruby on Rails framework, a SQLite3 database and a bunch of Ruby gems.
 
-Things you may want to cover:
+This app is a minimum viable product for the Flatiron School Rails Project requirement for the self-paced software engineering course.  See project-specs.md for requirement details.
 
-* Ruby version
+A user can sign up and sign in via email or OmniAuth2 to create a dream request or fund another's dream.  Dreams have CRUD capability.  Users have aliases of "Dreamer" and "Funder".  ERB forms have been used.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+There has been no use of Rails scaffolds in the making of this app.
