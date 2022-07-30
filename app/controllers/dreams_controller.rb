@@ -49,21 +49,23 @@ class DreamsController < ApplicationController
   end
 
   def create
-    @dream = Dream.new
+    @dream = Dream.new(dream_params)
     # Using strong params implies programmer knows exactly what data they are assigning and data has been sanitized before saving to database
-    @dream.name = params["Name"]
-    @dream.cost = params["Cost"]
+    # @dream.name = params["Name"]
+    # @dream.cost = params["Cost"]
+    # raise params.inspect
     @dream.dreamer_user_id = current_user.id
     # Rails magic .save method
+    # validations for model here
     if @dream.save
       # assume new row was added to database
       redirect_to dream_path(@dream.id)
-    elsif params["Cost"] == ""
-      redirect_to new_dream_path, notice: "Cost of Dream is missing and required for dream entry, please try again."
-    elsif params["Name"] == ""
-      redirect_to new_dream_path, notice: "Name of Dream is missing and required for dream entry, please try again."
+    # elsif params["cost"] == ""
+    #   redirect_to new_dream_path, notice: "Cost of Dream is missing and required for dream entry, please try again."
+    # elsif params["name"] == ""
+    #   redirect_to new_dream_path, notice: "Name of Dream is missing and required for dream entry, please try again."
     else
-      render dreams_path(@dream)
+      render :new
     end
   end
   
@@ -85,6 +87,7 @@ class DreamsController < ApplicationController
       #   User.new(user_params)   SANITIZED SO USERS CAN'T HACK
       def dream_params
         params.permit(:name, :cost, :funder_user_id, :thanks)
+        # params.require(:dream).permit(*args)
       end
     end
 

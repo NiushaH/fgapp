@@ -21,10 +21,15 @@ Rails.application.routes.draw do
   resources :dreams, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   get 'users/:id' => 'users#show', :as => :show_dreamer
 
+  # For live coding session assessment
+  get 'orderAtoZ' => 'users#orderAtoZ', :as => :orderAtoZ
+
+  # Refactor for fun if want to use user_ as path prefix with
+  #  scope '/users', module: 'user' do
   resources :users, only: [:show, :edit, :update] do
     resources :dreams, only: [:new, :create, :show, :edit, :update, :destroy]
   end
-
+  
   get 'users/:id/' => 'users#show', :as => :show_funder
   get 'users/:id/mydreams' => 'users#show_all_user_dreams', :as => :user_dreams_index
   get 'users/:id/funds' => 'users#show_investments', :as => :user_funds

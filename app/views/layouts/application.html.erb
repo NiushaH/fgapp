@@ -22,6 +22,8 @@
         <section class="utility">
           <ul class="nav navbar-nav navbar-right">
             <% if session[:current_user_id] %>
+            <br>
+            <br>
             <a href="/logout">Logout</a>
             <p></p>
             <p>
@@ -42,6 +44,8 @@
             <% if session[:current_user_id] %>
               <nav>        
                 <section>
+                  <br>  
+                  <br>
                   <p><%= link_to_unless_current "Home", root_path %></p>
                   <p><%= link_to_unless_current "All Possible Dreams to Fund", dreams_path %></p>
                   <%# # ADD / Include nested resource "new" form to add a new dream (URL e.g. users/1/dreams/new)  %>

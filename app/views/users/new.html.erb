@@ -1,5 +1,6 @@
 <h1> Register for Fairy Godmother :: A Human Capital Investment App</h1>
 
+<h2>FORM_TAG</h2>
 <%= form_tag("/users") do%>
   <p>
     <%= label_tag "email", "Email:" %>
@@ -11,4 +12,17 @@
   </p>
   <%= submit_tag "Register" %>
 <% end %>
-
+<br>
+<br>
+<h2>FORM_FOR -- work/learning in progress</h2>
+<%= form_for(@user) do |f| %>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <%= f.submit "Register", name: 'Register' %>
+<% end %>

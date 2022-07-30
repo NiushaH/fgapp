@@ -1,0 +1,8 @@
+<h1> All Users in Order </h1>
+
+<% @users.all_users_alphabetized.each do |u| %>
+  <li> <%= u.email %> </li>
+       <% link_to "CLICK HERE TO REMOVE THIS USER", user_path(u.id), method: :delete %> </a>
+  <br>
+<% end %>
+</ol>

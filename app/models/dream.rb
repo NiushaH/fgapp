@@ -5,7 +5,7 @@ class Dream < ApplicationRecord
     # Turned off belongs_to validation with optional code on line below
     # SHOULD I ADD THIS: , :foreign_key => "dreams_funded_id"
     belongs_to :funder_user, :class_name => "User", :optional => true
-    validates :name, :length => {in: 3..100}
+    validates :name, :length => {in: 1..100}
     validates :cost, :presence => true
     # consider adding validation of numericality: { only_integer: true }
     # check the object in Rails console by calling self.changes
@@ -13,7 +13,15 @@ class Dream < ApplicationRecord
     
     scope :dreams_you_can_still_fund, -> { where(funder_user_id: nil) }
     scope :expensive_dreams_to_fund, -> { dreams_you_can_still_fund.where("Cost > 5000") }
-    scope :order_by_funded_dream_and_cost, -> {status(:funded).order(:cost)}
+    scope :order_by_funded_dream_and_cost, -> { status(:funded).order(:cost) }
+
+  # def self.dreams_you_can_still_fund
+  #   Dream.all.map do |d|
+  #     if !d.funder_user_id
+  #       d
+  #     end
+  #   end.compact
+  # end
 
   def self.by_status(status)
     # ActiveRecord Scopes help build macros like this one below:

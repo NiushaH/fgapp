@@ -12,7 +12,6 @@ SHOW /users/:id/mydreams
   users dreams and their funding and thanking status
 
 SHOW /dreams/new
-  # eventually validate if funding is an integer
   # format integers into dollar figures (or choose currency)
 
 
@@ -59,18 +58,6 @@ SHOW /transfers
 
 
 
-3 THINGS LEFT TO COMPLETE PROJECT
-  # ADD A class level Active Record scope method (model object & class method name and URL to see the working feature e.g. Dreams.biggest_funded URL: /dreams/top_five_funded)
-    
-  # ADD / Include third party signup/login (how e.g. Devise/OmniAuth)
-
-  # CREATE / ADD DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()
-
-  # UPDATE Github checklist for project specs at https://gist.github.com/NiushaH/5f4f2b73657796b9f2a63dccc7b8d8e0
-
-  # delete user 8's jenny@flatiron.com dreams: 16, 17, 21, 22-26
-
-
 QUESTIONS FOR PROJECT REVIEW
   # is dream.thanks considered a dreamer_user (has_many through) user submittable attribute --- required for project??
 
@@ -80,4 +67,4 @@ IDEAS FOR LATER
   *  build out to have multiple funders (possibly give dreamers the option of approving who to accept)
   *  build user profile page with CRUD capabilities
   *  be able to edit thanks
-
+  *  CREATE / ADD DB OUTLINE OF RELATIONSHIPS USING RUBY GEM ()

@@ -2,11 +2,19 @@ class UsersController < ApplicationController
   
   def new
     # teach application how to remember people
+    @user = User.new
+    
     if session[:current_user_id]
       redirect_to "/", :notice => "Already logged in!"
     end
+
   end
 
+  # Live coding session assessment
+  def orderAtoZ
+    @users = User.all
+  end
+  
   def create
     @user = User.new
     @user.email = params[:email]
@@ -49,6 +57,11 @@ class UsersController < ApplicationController
     @user = current_user
     @dreamers_I_support = @user.dreams_funded.where(funder_user_id: current_user.id)
   end
+
+  # def destroy
+  #   @user = User.find(params[:id]).destroy
+  #   redirect_to orderAtoZ_path
+  # end
 
   # private
     # def user_params(*args)

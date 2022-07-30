@@ -21,4 +21,4 @@ Confirm:
 X The application is pretty DRY
 X Limited logic in controllers
 X Views use helper methods if appropriate (e.g. logged_in?, current_user)
-X Views use partials if appropriate (e.g. _add_thanks.html.erb)
+X Views use partials if appropriate (e.g. app/views/dreams _form.html.erb)
